@@ -8,6 +8,16 @@ var FRUITS = 0
 var TOTAL_FRUITS = 0
 var PORTAL = null
 var WIN = false
+var FULLSCREEN = false
+
+func init():
+	GHOST = null
+	IN_OTHER = false
+	BlackEffect = null
+	FRUITS = 0
+	TOTAL_FRUITS = 0
+	PORTAL = null
+	WIN = false
 
 func _ready():
 	pass
