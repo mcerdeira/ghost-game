@@ -1,5 +1,10 @@
-extends Node2D
-var mode = ""
+extends CharacterBody2D
+var mode = "npc"
+var gravity = 10.0
+var speed = 100.0
+var jump_speed = -300.0
+var direction = "right"
+
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
 var idle_timer_total = 5
@@ -9,13 +14,24 @@ func _ready():
 	add_to_group("npc")
 	set_sprite()
 
-func _process(delta):
+func _physics_process(delta):
+	if !is_on_floor():
+		velocity.y += gravity
+		
+	velocity.x = 0
+	
 	if mode == "npc":
 		process_npc(delta)
 	elif mode == "player":
 		process_player(delta)
+		
+	move_and_slide()
 
 func process_npc(delta):
+	if type == Global.npc_types.WALKY:
+		idle_timer = 0
+	
+	
 	if state == Global.npc_states.IDLE:
 		idle_timer -= 1 * delta
 		if idle_timer <= 0:
@@ -30,7 +46,24 @@ func process_npc(delta):
 		pass
 	
 func process_player(delta):
-	pass
+	var moving = false
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y = jump_speed
+	if Input.is_action_pressed("left"):
+		direction = "left"
+		moving = true
+		velocity.x = -speed
+		$sprite.scale.x = -1
+	elif Input.is_action_pressed("right"):
+		direction = "right"
+		moving = true
+		velocity.x = speed
+		$sprite.scale.x = 1
+		
+	if moving:
+		$sprite.play()
+	else:
+		$sprite.stop()
 	
 func set_sprite():
 	if type == Global.npc_types.FLAMY:
@@ -66,8 +99,30 @@ func jump(delta):
 func sleep(delta):
 	pass
 	
+func swap_direction():
+	if direction == "left":
+		return "right"
+	else:
+		return "left"
+	
 func walk(delta):
-	pass
+	var moving = false
+	if is_on_wall():
+		direction = swap_direction()
+	
+	if is_on_floor() and direction == "left":
+		moving = true
+		velocity.x = -speed
+		$sprite.scale.x = -1
+	elif is_on_floor() and direction == "right":
+		moving = true
+		velocity.x = speed
+		$sprite.scale.x = 1
+		
+	if moving:
+		$sprite.play()
+	else:
+		$sprite.stop()
 	
 func push(delta, node):
 	pass
@@ -77,3 +132,8 @@ func grab(delta, node):
 	
 func shoot(delta, type):
 	pass
+	
+func _on_mouse_rec_input_event(viewport, event, shape_idx):
+	if !Global.IN_OTHER and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		Global.GHOST.set_possesed(self)
+		get_tree().paused = true
