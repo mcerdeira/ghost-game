@@ -4,6 +4,8 @@ var gravity = 10.0
 var speed = 100.0
 var jump_speed = -300.0
 var direction = "right"
+var absorved_ttl = 0
+var is_absorved = false
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -15,6 +17,15 @@ func _ready():
 	set_sprite()
 
 func _physics_process(delta):
+	if Global.WIN:
+		if is_absorved:
+			if absorved_ttl > 0:
+				absorved_ttl -= 1 * delta
+			elif absorved_ttl <= 0:
+				$sprite.rotation_degrees += 200 * delta
+				$sprite.scale.x = lerp($sprite.scale.x, 0.0, 0.01)
+				$sprite.scale.y = $sprite.scale.x 
+	
 	if !is_on_floor():
 		velocity.y += gravity
 		
@@ -31,7 +42,6 @@ func process_npc(delta):
 	if type == Global.npc_types.WALKY:
 		idle_timer = 0
 	
-	
 	if state == Global.npc_states.IDLE:
 		idle_timer -= 1 * delta
 		if idle_timer <= 0:
@@ -46,24 +56,26 @@ func process_npc(delta):
 		pass
 	
 func process_player(delta):
-	var moving = false
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = jump_speed
-	if Input.is_action_pressed("left"):
-		direction = "left"
-		moving = true
-		velocity.x = -speed
-		$sprite.scale.x = -1
-	elif Input.is_action_pressed("right"):
-		direction = "right"
-		moving = true
-		velocity.x = speed
-		$sprite.scale.x = 1
-		
-	if moving:
-		$sprite.play()
-	else:
-		$sprite.stop()
+	if !Global.WIN:
+		var moving = false
+		if Input.is_action_just_pressed("jump"):
+			do_action(delta)
+			
+		if Input.is_action_pressed("left"):
+			direction = "left"
+			moving = true
+			velocity.x = -speed
+			$sprite.scale.x = -1
+		elif Input.is_action_pressed("right"):
+			direction = "right"
+			moving = true
+			velocity.x = speed
+			$sprite.scale.x = 1
+			
+		if moving:
+			$sprite.play()
+		else:
+			$sprite.stop()
 	
 func set_sprite():
 	if type == Global.npc_types.FLAMY:
@@ -79,22 +91,28 @@ func set_sprite():
 	if type == Global.npc_types.WALKY:
 		pass
 		
+func absorved():
+	is_absorved = true
+	absorved_ttl = 0.1
+		
 func do_action(delta):
-	if type == Global.npc_types.FLAMY:
-		shoot(delta, "fire")
-	if type == Global.npc_types.JUMPY:
-		jump(delta)
-	if type == Global.npc_types.GRABY:
-		pass
-	if type == Global.npc_types.PUSHY:
-		pass
-	if type == Global.npc_types.SLEEPY:
-		sleep(delta)
-	if type == Global.npc_types.WALKY:
-		walk(delta)
+	if !Global.WIN:
+		if type == Global.npc_types.FLAMY:
+			shoot(delta, "fire")
+		if type == Global.npc_types.JUMPY:
+			jump(delta)
+		if type == Global.npc_types.GRABY:
+			pass
+		if type == Global.npc_types.PUSHY:
+			pass
+		if type == Global.npc_types.SLEEPY:
+			sleep(delta)
+		if type == Global.npc_types.WALKY:
+			walk(delta)
 
 func jump(delta):
-	pass
+	if is_on_floor():
+		velocity.y = jump_speed
 	
 func sleep(delta):
 	pass

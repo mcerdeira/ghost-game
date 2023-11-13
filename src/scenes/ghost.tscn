@@ -22,5 +22,6 @@ animations = [{
 script = ExtResource("1_d2mrs")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(2, 2, 2, 1)
 sprite_frames = SubResource("SpriteFrames_48yrt")
 frame_progress = 0.348747

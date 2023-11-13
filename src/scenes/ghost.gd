@@ -17,6 +17,7 @@ func set_dest(_dest):
 		global_position = possed_char.global_position
 		speed = normal_speed
 		possed_char.mode = "npc"
+		possed_char.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		visible = true
 		Global.IN_OTHER = false
 		dest = _dest
@@ -26,7 +27,8 @@ func set_dest(_dest):
 func set_possesed(_obj):
 	Global.BlackEffect.visible = true
 	possed_char = _obj
-	possed_char.z_index = 1
+	possed_char.z_index = 10
+	possed_char.modulate = Color(2.0, 2.0, 2.0, 1.0)
 	dest = _obj.global_position
 	possesing = true
 	speed = posses_speed

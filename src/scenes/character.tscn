@@ -27,25 +27,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpd0d"]
-size = Vector2(26, 27)
+size = Vector2(30, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vlsc"]
-size = Vector2(32, 29)
+[sub_resource type="CircleShape2D" id="CircleShape2D_50n3j"]
+radius = 21.006
 
 [node name="character" type="CharacterBody2D"]
+platform_on_leave = 2
 script = ExtResource("1_8fn81")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ohtx4")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_xpd0d")
 
 [node name="mouse_rec" type="Area2D" parent="."]
 
 [node name="collider" type="CollisionShape2D" parent="mouse_rec"]
 position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_0vlsc")
+shape = SubResource("CircleShape2D_50n3j")
 
 [connection signal="input_event" from="mouse_rec" to="." method="_on_mouse_rec_input_event"]

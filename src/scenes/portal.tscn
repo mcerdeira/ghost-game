@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://brgkl6voaoltp"]
+
+[ext_resource type="Texture2D" uid="uid://ckl6rfp7670gl" path="res://sprites/portal.png" id="1_3jkcv"]
+[ext_resource type="Script" path="res://scenes/portal.gd" id="1_g8ymj"]
+[ext_resource type="Texture2D" uid="uid://bo75jwx341tbv" path="res://sprites/portal1.png" id="2_h5myw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wevx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3jkcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h5myw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f45im"]
+radius = 11.0454
+
+[sub_resource type="Animation" id="Animation_8jqap"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.3, 0.3), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsm62"]
+_data = {
+"new_animation": SubResource("Animation_8jqap")
+}
+
+[node name="portal" type="Area2D"]
+script = ExtResource("1_g8ymj")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 10, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wevx4")
+frame_progress = 0.301117
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f45im")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rsm62")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

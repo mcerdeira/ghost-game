@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0dkx8ufq5anc"]
+
+[ext_resource type="Script" path="res://scenes/fruit.gd" id="1_7qcgi"]
+[ext_resource type="Texture2D" uid="uid://bdksxpcyy2rju" path="res://sprites/fruit.png" id="1_nbb5b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aj8ha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nbb5b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjouo"]
+radius = 14.3178
+
+[node name="fruit" type="Area2D"]
+script = ExtResource("1_7qcgi")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aj8ha")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tjouo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
