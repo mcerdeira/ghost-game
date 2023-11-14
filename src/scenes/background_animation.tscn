@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc88cl43m4kde"]
+
+[sub_resource type="Animation" id="Animation_ybq0l"]
+resource_name = "new_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.207843), Color(0.694118, 0.333333, 0.913725, 0.207843), Color(0.231373, 0.619608, 0.427451, 0.207843), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wclnq"]
+_data = {
+"new_animation": SubResource("Animation_ybq0l")
+}
+
+[node name="background_animation" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_wclnq")
+}

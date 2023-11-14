@@ -26,6 +26,8 @@ func set_dest(_dest):
 		custom_look_at(dest)
 	
 func set_possesed(_obj):
+	set_dest(_obj.position)
+	
 	Global.BlackEffect.visible = true
 	possed_char = _obj
 	possed_char.z_index = 10

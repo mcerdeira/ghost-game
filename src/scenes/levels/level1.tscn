@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c28twii3shdc2"]
+[gd_scene load_steps=19 format=3 uid="uid://c28twii3shdc2"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_0up3h"]
 [ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_vi4xr"]
@@ -45,6 +45,28 @@ glow_enabled = true
 glow_blend_mode = 1
 glow_hdr_threshold = 0.1
 
+[sub_resource type="Animation" id="Animation_ybq0l"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.207843), Color(0.694118, 0.333333, 0.913725, 0.207843), Color(0.231373, 0.619608, 0.427451, 0.207843), Color(0.9, 0.61, 0.23, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wclnq"]
+_data = {
+"new_animation": SubResource("Animation_ybq0l")
+}
+
 [node name="level1" type="Node2D"]
 script = ExtResource("1_0up3h")
 
@@ -62,7 +84,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.811765)
 
 [node name="background" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 0.207843)
+modulate = Color(0.9, 0.61, 0.23, 0.2)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
 texture = ExtResource("2_vi4xr")
@@ -129,5 +151,11 @@ position = Vector2(435, 411)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
+
+[node name="background_animation" type="AnimationPlayer" parent="."]
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_wclnq")
+}
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

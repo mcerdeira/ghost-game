@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvp3cn8omsso4"]
+[gd_scene load_steps=19 format=3 uid="uid://cvp3cn8omsso4"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_kxyoa"]
 [ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_iokmp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="8_0mbed"]
 [ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_eujca"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_0qcuh"]
+[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="11_p7x27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
 texture = ExtResource("3_o20pc")
@@ -44,6 +45,28 @@ glow_enabled = true
 glow_blend_mode = 1
 glow_hdr_threshold = 0.1
 
+[sub_resource type="Animation" id="Animation_ybq0l"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.207843), Color(0.694118, 0.333333, 0.913725, 0.207843), Color(0.231373, 0.619608, 0.427451, 0.207843), Color(0.9, 0.61, 0.23, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wclnq"]
+_data = {
+"new_animation": SubResource("Animation_ybq0l")
+}
+
 [node name="level2" type="Node2D"]
 script = ExtResource("1_kxyoa")
 
@@ -61,7 +84,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.811765)
 
 [node name="background" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 0.207843)
+modulate = Color(0.9, 0.61, 0.23, 0.2)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
 texture = ExtResource("2_iokmp")
@@ -71,7 +94,7 @@ metadata/_edit_lock_ = true
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 720914, 0, 0, 655378, 0, 0, 720915, 0, 0, 655379, 0, 0, 655365, 0, 0, 589844, 0, 0, 655380, 0, 0, 720916, 0, 0, 589845, 0, 0, 655381, 0, 0, 720917, 0, 0, 589846, 0, 0, 655382, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, 655385, 0, 0, 589849, 0, 0, 589848, 0, 0, 589847, 0, 0, 655383, 0, 0, 655384, 0, 0, 393223, 0, 0)
+layer_0/tile_data = PackedInt32Array(720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 720914, 0, 0, 720915, 0, 0, 655379, 0, 0, 655365, 0, 0, 655380, 0, 0, 720916, 0, 0, 655381, 0, 0, 720917, 0, 0, 655382, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, 655385, 0, 0, 655383, 0, 0, 655384, 0, 0, 393223, 0, 0, 393222, 0, 0, 655364, 0, 0, 720900, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0, 655390, 0, 0, 655391, 0, 0, 655392, 0, 0, 655393, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="ghost" parent="." instance=ExtResource("5_y1sml")]
@@ -105,8 +128,26 @@ environment = SubResource("Environment_oaqbm")
 [node name="floor" parent="." instance=ExtResource("7_mj055")]
 position = Vector2(560, 336)
 
+[node name="floor3" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(528, 336)
+
+[node name="floor7" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(496, 336)
+
+[node name="floor4" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(592, 336)
+
 [node name="floor2" parent="." instance=ExtResource("7_mj055")]
-position = Vector2(624, 304)
+position = Vector2(880, 304)
+
+[node name="floor5" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(912, 304)
+
+[node name="floor6" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(848, 304)
+
+[node name="floor8" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(816, 304)
 
 [node name="character" parent="." instance=ExtResource("6_mv56c")]
 position = Vector2(259, 176)
@@ -123,6 +164,15 @@ type = 3
 position = Vector2(383, 335)
 
 [node name="fruit2" parent="." instance=ExtResource("9_eujca")]
-position = Vector2(707, 267)
+position = Vector2(1003, 269)
+
+[node name="portal" parent="." instance=ExtResource("11_p7x27")]
+position = Vector2(159, 297)
+
+[node name="background_animation" type="AnimationPlayer" parent="."]
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_wclnq")
+}
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

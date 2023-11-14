@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var mode = "npc"
 var gravity = 10.0
-var speed = 100.0
+var speed = 75.0
 var jump_speed = -300.0
 var direction = "right"
 var absorved_ttl = 0
@@ -173,7 +173,7 @@ func shoot(delta, type):
 	pass
 	
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
-	if !Global.IN_OTHER and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if Global.level_name == "Level0":
 			Global.next_tutorial()
 

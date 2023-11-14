@@ -2,10 +2,11 @@ extends Node2D
 var speed = 2
 var blue = 0.0
 var dir = 1
-var val = 0.001
+var val = 0.01
 var win_ttl = 3
 
 func _ready():
+	$background_animation.play("new_animation")
 	Global.level_name = get_tree().get_current_scene().get_name()
 	$Area2D.visible = true
 	Global.BlackEffect = $BlackEffect
@@ -42,18 +43,18 @@ func _physics_process(delta):
 			Global.init()
 			get_tree().change_scene_to_file(next_level)
 
-	
-	if (1 - blue) <= val and dir == 1:
-		dir = -1
-	elif blue <= val and dir == -1:
-		dir = 1
-		
-	if dir == 1:
-		blue = lerp(blue, 1.0, val)
-	else:
-		blue = lerp(blue, 0.0, val) 
-	
-	$background.modulate = Color(1, 0, blue, 0.15)
+#
+#	if (1 - blue) <= val and dir == 1:
+#		dir = -1
+#	elif blue <= val and dir == -1:
+#		dir = 1
+#
+#	if dir == 1:
+#		blue = lerp(blue, 1.0, val)
+#	else:
+#		blue = lerp(blue, 0.0, val) 
+#
+#	$background.modulate = Color(1, 0, blue, 0.15)
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.double_click:

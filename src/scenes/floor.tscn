@@ -25,3 +25,8 @@ sprite_frames = SubResource("SpriteFrames_7rqct")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lu05r")
+
+[node name="up" type="Marker2D" parent="."]
+
+[node name="down" type="Marker2D" parent="."]
+position = Vector2(0, 32)
