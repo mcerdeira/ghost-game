@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://7r6dcibmyspx"]
+[gd_scene load_steps=12 format=3 uid="uid://7r6dcibmyspx"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
 [ext_resource type="Texture2D" uid="uid://bx015ida3lg2f" path="res://sprites/zombie_spr_0.png" id="2_j87p0"]
 [ext_resource type="Texture2D" uid="uid://bflnc63m3mdkn" path="res://sprites/zombie_spr_1.png" id="3_qmh23"]
 [ext_resource type="Texture2D" uid="uid://dx2b37uh7dirw" path="res://sprites/zombie_spr_2.png" id="4_4fodm"]
 [ext_resource type="Texture2D" uid="uid://buw5m0yp8wbxj" path="res://sprites/zombie_spr_3.png" id="5_8yhj0"]
+[ext_resource type="Texture2D" uid="uid://bvwah4xbherm6" path="res://sprites/sleep.png" id="6_nb65x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohtx4"]
 animations = [{
@@ -32,6 +33,51 @@ size = Vector2(30, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_50n3j"]
 radius = 21.006
 
+[sub_resource type="Animation" id="Animation_4q2oo"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sleep:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, -23), Vector2(3, -53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sleep:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sleep:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qypbr"]
+_data = {
+"new_animation": SubResource("Animation_4q2oo")
+}
+
 [node name="character" type="CharacterBody2D"]
 platform_on_leave = 2
 script = ExtResource("1_8fn81")
@@ -47,5 +93,16 @@ shape = SubResource("RectangleShape2D_xpd0d")
 [node name="collider" type="CollisionShape2D" parent="mouse_rec"]
 position = Vector2(0, 1.5)
 shape = SubResource("CircleShape2D_50n3j")
+
+[node name="Sleep" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, -23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_nb65x")
+
+[node name="SleepAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qypbr")
+}
 
 [connection signal="input_event" from="mouse_rec" to="." method="_on_mouse_rec_input_event"]

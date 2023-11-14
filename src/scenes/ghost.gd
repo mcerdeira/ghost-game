@@ -16,7 +16,7 @@ func set_dest(_dest):
 	if Global.IN_OTHER:
 		global_position = possed_char.global_position
 		speed = normal_speed
-		possed_char.mode = "npc"
+		possed_char.change_mode("npc")
 		possed_char.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		visible = true
 		Global.IN_OTHER = false
@@ -44,6 +44,9 @@ func _process(delta):
 	if !Global.IN_OTHER:
 		if !possesing:
 			if Input.is_action_just_pressed("click"):
+				if Global.level_name == "Level0":
+					Global.next_tutorial()
+				
 				dest = get_global_mouse_position()
 				custom_look_at(dest)
 				
@@ -55,7 +58,7 @@ func _process(delta):
 				dash_pos = []
 				Global.BlackEffect.visible = false
 				possed_char.z_index = 0
-				possed_char.mode = "player"
+				possed_char.change_mode("player")
 				dest = null
 				get_tree().paused = false
 				possesing = false

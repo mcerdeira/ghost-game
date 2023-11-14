@@ -1,19 +1,19 @@
 [gd_scene load_steps=17 format=3 uid="uid://c28twii3shdc2"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_asitt"]
-[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="1_jnkl8"]
-[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_4f2qo"]
-[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="2_arqj3"]
-[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_8pn6r"]
-[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="3_32d5m"]
-[ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="7_caodr"]
-[ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="8_d2nb8"]
-[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_xbe2j"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_u2to0"]
-[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="11_i0ni3"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_0up3h"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_vi4xr"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_bvsrg"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_lq7e1"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_jbkdn"]
+[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="6_2l228"]
+[ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="7_r07ky"]
+[ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="8_r7hvi"]
+[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_kra8n"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_u7s8d"]
+[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="11_w113f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
-texture = ExtResource("3_8pn6r")
+texture = ExtResource("3_bvsrg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -21,7 +21,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
-texture = ExtResource("2_arqj3")
+texture = ExtResource("4_lq7e1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -45,11 +45,11 @@ glow_enabled = true
 glow_blend_mode = 1
 glow_hdr_threshold = 0.1
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_asitt")
+[node name="level1" type="Node2D"]
+script = ExtResource("1_0up3h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+position = Vector2(576, 326)
 
 [node name="BlackEffect" type="ColorRect" parent="."]
 visible = false
@@ -65,7 +65,7 @@ color = Color(0, 0, 0, 0.811765)
 modulate = Color(1, 0, 0, 0.207843)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
-texture = ExtResource("2_4f2qo")
+texture = ExtResource("2_vi4xr")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -75,16 +75,16 @@ format = 2
 layer_0/tile_data = PackedInt32Array(524302, 5, 0, 524303, 5, 0, 524304, 5, 0, 524305, 5, 0, 524306, 5, 0, 524307, 5, 0, 524308, 5, 0, 524309, 5, 0, 524310, 5, 0, 917512, 5, 0, 917513, 5, 0, 917514, 5, 0, 917515, 5, 0, 917518, 0, 0, 917519, 5, 0, 917520, 5, 0, 917521, 5, 0, 917522, 5, 0, 917523, 5, 0, 917524, 5, 0, 917525, 5, 0, 917526, 5, 0, 917527, 5, 0, 917528, 5, 0, 917529, 5, 0, 917530, 5, 0, 851994, 5, 0, 917516, 0, 0, 983052, 5, 0, 983053, 5, 0, 983054, 5, 0, 917511, 5, 0, 917510, 5, 0, 917509, 5, 0, 917508, 5, 0, 917507, 5, 0, 851971, 5, 0, 524311, 5, 0, 524312, 5, 0, 524313, 5, 0, 524314, 5, 0, 524301, 5, 0, 524300, 5, 0, 524299, 5, 0, 524298, 5, 0, 524315, 5, 0, 524316, 5, 0, 524317, 5, 0)
 metadata/_edit_lock_ = true
 
-[node name="ghost" parent="." instance=ExtResource("1_jnkl8")]
+[node name="ghost" parent="." instance=ExtResource("5_jbkdn")]
 process_mode = 3
 z_index = 10
 position = Vector2(139, 183)
 
-[node name="character" parent="." instance=ExtResource("3_32d5m")]
+[node name="character" parent="." instance=ExtResource("6_2l228")]
 position = Vector2(579, 240)
 type = 3
 
-[node name="character2" parent="." instance=ExtResource("3_32d5m")]
+[node name="character2" parent="." instance=ExtResource("6_2l228")]
 position = Vector2(256, 432)
 type = 3
 
@@ -97,19 +97,19 @@ position = Vector2(579.5, 325)
 shape = SubResource("RectangleShape2D_02l11")
 metadata/_edit_lock_ = true
 
-[node name="floor" parent="." instance=ExtResource("7_caodr")]
+[node name="floor" parent="." instance=ExtResource("7_r07ky")]
 position = Vector2(367, 433)
 
-[node name="switch" parent="." instance=ExtResource("8_d2nb8")]
+[node name="switch" parent="." instance=ExtResource("8_r7hvi")]
 position = Vector2(368, 241)
 
-[node name="fruit" parent="." instance=ExtResource("9_xbe2j")]
+[node name="fruit" parent="." instance=ExtResource("9_kra8n")]
 position = Vector2(912, 241)
 
-[node name="fruit2" parent="." instance=ExtResource("9_xbe2j")]
+[node name="fruit2" parent="." instance=ExtResource("9_kra8n")]
 position = Vector2(431, 463)
 
-[node name="fruit3" parent="." instance=ExtResource("9_xbe2j")]
+[node name="fruit3" parent="." instance=ExtResource("9_kra8n")]
 position = Vector2(590, 431)
 
 [node name="lbl_fruits" type="Label" parent="."]
@@ -117,7 +117,7 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 1151.0
 offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("10_u2to0")
+theme_override_fonts/font = ExtResource("10_u7s8d")
 theme_override_font_sizes/font_size = 24
 text = "FRUITS: 0"
 horizontal_alignment = 1
@@ -129,12 +129,12 @@ offset_left = 4.0
 offset_top = 387.0
 offset_right = 386.0
 offset_bottom = 443.0
-theme_override_fonts/font = ExtResource("10_u2to0")
+theme_override_fonts/font = ExtResource("10_u7s8d")
 text = "LEVEL CLEARED!!!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="portal" parent="." instance=ExtResource("11_i0ni3")]
+[node name="portal" parent="." instance=ExtResource("11_w113f")]
 z_index = -1
 position = Vector2(159, 425)
 

@@ -6,6 +6,7 @@ var jump_speed = -300.0
 var direction = "right"
 var absorved_ttl = 0
 var is_absorved = false
+var first_time = true
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -37,10 +38,18 @@ func _physics_process(delta):
 		process_player(delta)
 		
 	move_and_slide()
+	
+func change_mode(_mode):
+	first_time = true
+	mode = _mode
 
 func process_npc(delta):
 	if type == Global.npc_types.WALKY:
 		idle_timer = 0
+	
+	if first_time and type == Global.npc_types.SLEEPY:
+		first_time = false
+		idle_timer = 0.1
 	
 	if state == Global.npc_states.IDLE:
 		idle_timer -= 1 * delta
@@ -66,11 +75,13 @@ func process_player(delta):
 			moving = true
 			velocity.x = -speed
 			$sprite.scale.x = -1
+			un_sleep()
 		elif Input.is_action_pressed("right"):
 			direction = "right"
 			moving = true
 			velocity.x = speed
 			$sprite.scale.x = 1
+			un_sleep()
 			
 		if moving:
 			$sprite.play()
@@ -115,7 +126,12 @@ func jump(delta):
 		velocity.y = jump_speed
 	
 func sleep(delta):
-	pass
+	$Sleep.visible = true
+	$SleepAnimation.play("new_animation")
+	
+func un_sleep():
+	$Sleep.visible = false
+	$SleepAnimation.stop(false)
 	
 func swap_direction():
 	if direction == "left":
@@ -153,5 +169,8 @@ func shoot(delta, type):
 	
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
 	if !Global.IN_OTHER and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if Global.level_name == "Level0":
+			Global.next_tutorial()
+
 		Global.GHOST.set_possesed(self)
 		get_tree().paused = true
