@@ -2,6 +2,7 @@ extends Node2D
 var posses_speed = 7
 var normal_speed = 2
 var dash_pos = []
+var dialog_obj = preload("res://scenes/dialog.tscn")
 
 var speed = normal_speed
 var dest = null
@@ -64,6 +65,12 @@ func _process(delta):
 				possesing = false
 				visible = false
 				Global.IN_OTHER = true
+				
+				if !possed_char.type in Global.POSSESSIONS:
+					var dialog = dialog_obj.instantiate()
+					dialog.initialize(possed_char.type)
+					get_parent().add_child(dialog)
+					dialog.position = get_viewport_rect().size / 2
 			
 		if dest != null:
 			global_position.x = lerp(global_position.x, dest.x, speed * delta)

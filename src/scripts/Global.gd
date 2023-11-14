@@ -12,13 +12,30 @@ var FULLSCREEN = false
 var level_name = ""
 var tutorial_index = 0
 var tutorial_lbl = null
+var POSSESSIONS = []
 var LEVEL = 0
 var TUTORIALS = [
 	"[CLIK TO MOVE THE GHOST AROUND]",
 	"[CLIK TO MOVE THE GHOST AROUND]",
 	"[RIGHT CLICK ON OTHERS TO POSSES]",
-	"[CONTROL THE POSSESSED BODY]",
+	"[CONTROL THE POSSESSED BODY (WASD/SPACE)]",
 	"[GET ALL THE FRUITS TO UNLOCK THE PORTAL\nAND EXIT LEVEL THROUGH ACTIVED PORTAL]",
+]
+
+var CHARS_DATA = [{
+},
+{
+	"title": "JUMPY",
+	"description": "Jumps around like a rabbit.",
+},
+{
+	"title": "SLEEPY",
+	"description": "Falls asleep and does nothing.",
+},
+{
+	"title": "WALKY",
+	"description": "Walks from right to left and left to right.",
+}
 ]
 
 func next_tutorial():

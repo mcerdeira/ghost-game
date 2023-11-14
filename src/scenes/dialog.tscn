@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://b84tfmmwyohtu"]
+
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="1_2aywb"]
+[ext_resource type="Script" path="res://scenes/dialog.gd" id="1_b4hfa"]
+[ext_resource type="Texture2D" uid="uid://bx015ida3lg2f" path="res://sprites/zombie_spr_0.png" id="2_ellcg"]
+
+[sub_resource type="Animation" id="Animation_1qkg1"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lbl_title2:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.776471, 0.352941, 0.603922, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn87w"]
+_data = {
+"new_animation": SubResource("Animation_1qkg1")
+}
+
+[node name="dialog" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_b4hfa")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -231.0
+offset_top = -135.0
+offset_right = 248.0
+offset_bottom = 114.0
+color = Color(0.584314, 0, 0.584314, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -240.0
+offset_top = -154.0
+offset_right = 239.0
+offset_bottom = 95.0
+color = Color(0, 0, 0, 1)
+
+[node name="lbl_title" type="Label" parent="."]
+offset_left = -240.0
+offset_top = -33.0
+offset_right = 239.0
+offset_bottom = -6.0
+theme_override_fonts/font = ExtResource("1_2aywb")
+theme_override_font_sizes/font_size = 24
+text = "fsfdsfsfsffs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl_description" type="Label" parent="."]
+offset_left = -240.0
+offset_top = 6.0
+offset_right = 239.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("1_2aywb")
+text = "dsfsdfsdfsdfdssdfsdsdfsfdsfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="character" type="Sprite2D" parent="."]
+position = Vector2(-4, -72)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ellcg")
+
+[node name="btn" type="Button" parent="."]
+offset_left = -39.0
+offset_top = 66.0
+offset_right = 41.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("1_2aywb")
+text = "OK"
+
+[node name="lbl_title2" type="Label" parent="."]
+offset_left = -240.0
+offset_top = -144.0
+offset_right = 239.0
+offset_bottom = -124.0
+theme_override_colors/font_color = Color(0.879939, 0.652454, 0.78726, 1)
+theme_override_fonts/font = ExtResource("1_2aywb")
+text = "NEW POSSESSION!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.5
+libraries = {
+"": SubResource("AnimationLibrary_tn87w")
+}
+
+[connection signal="pressed" from="btn" to="." method="_on_btn_pressed"]

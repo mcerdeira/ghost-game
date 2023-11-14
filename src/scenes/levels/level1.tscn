@@ -82,7 +82,7 @@ position = Vector2(139, 183)
 
 [node name="character" parent="." instance=ExtResource("6_2l228")]
 position = Vector2(579, 240)
-type = 3
+type = 2
 
 [node name="character2" parent="." instance=ExtResource("6_2l228")]
 position = Vector2(256, 432)

@@ -32,6 +32,10 @@ func _physics_process(delta):
 		
 	velocity.x = 0
 	
+	if is_absorved:
+		velocity.x = 0
+		velocity.y = 0
+	
 	if mode == "npc":
 		process_npc(delta)
 	elif mode == "player":

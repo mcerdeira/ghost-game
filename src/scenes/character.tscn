@@ -9,6 +9,11 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohtx4"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"jumpy",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_j87p0")
@@ -23,7 +28,12 @@ animations = [{
 "texture": ExtResource("5_8yhj0")
 }],
 "loop": true,
-"name": &"default",
+"name": &"sleepy",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walky",
 "speed": 5.0
 }]
 
@@ -84,6 +94,7 @@ script = ExtResource("1_8fn81")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ohtx4")
+animation = &"jumpy"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xpd0d")
