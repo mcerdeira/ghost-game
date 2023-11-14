@@ -5,4 +5,8 @@ func _ready():
 
 func open():
 	visible = false
-	$collision.queue_free()
+	$collision.set_deferred("disabled", true)
+
+func close():
+	visible = true
+	$collision.set_deferred("disabled", false)

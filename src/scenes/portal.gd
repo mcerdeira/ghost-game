@@ -22,6 +22,8 @@ func _on_body_entered(body):
 		is_on = false
 		speed = 500
 		Global.WIN = true
+		$lbl_win.visible = true
+		$AnimationPlayer2.play("new_animation")
 		body.global_position = global_position
 		body.absorved()
 

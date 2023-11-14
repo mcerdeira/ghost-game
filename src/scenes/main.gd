@@ -31,7 +31,6 @@ func _physics_process(delta):
 	$background.rotation_degrees += (speed * -1) * delta
 	
 	if Global.WIN:
-		$lbl_win.visible = true
 		$Camera2D.zoom.x = lerp($Camera2D.zoom.x, 3.0, 0.01)
 		$Camera2D.zoom.y = $Camera2D.zoom.x
 		$Camera2D.position.x =  lerp($Camera2D.position.x, $portal.position.x, 0.01)

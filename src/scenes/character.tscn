@@ -94,7 +94,7 @@ script = ExtResource("1_8fn81")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ohtx4")
-animation = &"jumpy"
+animation = &"sleepy"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xpd0d")

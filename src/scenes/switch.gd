@@ -11,3 +11,12 @@ func _on_body_entered(body):
 		var doors = get_tree().get_nodes_in_group("red_door") 
 		for door in doors:
 			door.open()
+
+
+func _on_body_exited(body):
+	if !is_on and body.is_in_group("npc"):
+		$sprite.frame = 0
+		is_on = true
+		var doors = get_tree().get_nodes_in_group("red_door") 
+		for door in doors:
+			door.close()

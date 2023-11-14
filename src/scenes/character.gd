@@ -72,7 +72,8 @@ func process_player(delta):
 	if !Global.WIN:
 		var moving = false
 		if Input.is_action_just_pressed("jump"):
-			do_action(delta)
+			if type != Global.npc_types.WALKY:
+				do_action(delta)
 			
 		if Input.is_action_pressed("left"):
 			direction = "left"
