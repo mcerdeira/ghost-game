@@ -1,11 +1,12 @@
 extends Node2D
 var speed = 2
-var blue = 0.0
-var dir = 1
-var val = 0.01
 var win_ttl = 3
 
 func _ready():
+	if !Global.MUSIC_PLAYING:
+		Global.MUSIC_PLAYING = true
+		Music.play(Global.MainTheme)
+		
 	$background_animation.play("new_animation")
 	Global.level_name = get_tree().get_current_scene().get_name()
 	$Area2D.visible = true
@@ -39,24 +40,12 @@ func _physics_process(delta):
 		win_ttl -= 1 * delta
 		if win_ttl <= 0:
 			Global.LEVEL += 1
-			var next_level = "res://scenes/levels/level" + str(Global.LEVEL) +".tscn"
+			var next_level = Global.LEVELS[Global.LEVEL]
 			Global.init()
 			get_tree().change_scene_to_file(next_level)
 
-#
-#	if (1 - blue) <= val and dir == 1:
-#		dir = -1
-#	elif blue <= val and dir == -1:
-#		dir = 1
-#
-#	if dir == 1:
-#		blue = lerp(blue, 1.0, val)
-#	else:
-#		blue = lerp(blue, 0.0, val) 
-#
-#	$background.modulate = Color(1, 0, blue, 0.15)
-
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.double_click:
+		Global.play_sound(Global.POSSES_SFX)
 		Global.GHOST.set_dest(get_global_mouse_position())
 

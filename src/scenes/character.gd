@@ -130,6 +130,10 @@ func jump(delta):
 	if is_on_floor():
 		velocity.y = jump_speed
 	
+func mega_jump():
+	if is_on_floor():
+		velocity.y = jump_speed * 2
+	
 func sleep(delta):
 	$Sleep.visible = true
 	$SleepAnimation.play("new_animation")
@@ -149,13 +153,19 @@ func walk(delta):
 	if is_on_wall():
 		direction = swap_direction()
 	
-	if is_on_floor() and direction == "left":
+	if direction == "left":
 		moving = true
-		velocity.x = -speed
+		if is_on_floor():
+			velocity.x = -speed
+		else:
+			velocity.x = -(speed / 2)
 		$sprite.scale.x = -1
-	elif is_on_floor() and direction == "right":
+	elif direction == "right":
 		moving = true
-		velocity.x = speed
+		if is_on_floor():
+			velocity.x = speed
+		else:
+			velocity.x = (speed / 2)
 		$sprite.scale.x = 1
 		
 	if moving:
@@ -173,9 +183,11 @@ func shoot(delta, type):
 	pass
 	
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+	if mode == "npc" and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if Global.level_name == "Level0":
 			Global.next_tutorial()
-
+		
+		mode = "player"
+		Global.play_sound(Global.POSSES_SFX)
 		Global.GHOST.set_possesed(self)
 		get_tree().paused = true

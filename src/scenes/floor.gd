@@ -17,3 +17,4 @@ func open():
 
 func close():
 	where = $up
+

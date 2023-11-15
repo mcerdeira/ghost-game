@@ -1,17 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1qjoh13amv43"]
+[gd_scene load_steps=18 format=3 uid="uid://8nvvyq1obn3y"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_wni04"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="2_ptgup"]
-[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="3_t3sbq"]
-[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="4_vldhh"]
-[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="5_65b3b"]
-[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="6_ceskj"]
-[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="7_af6eg"]
-[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_vafrd"]
-[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_urn4o"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_2xhev"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="2_krrc6"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="3_25pen"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="4_rrloc"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="5_utaxe"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="6_uk3rb"]
+[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="7_82ft6"]
+[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_7jms6"]
+[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_bgmug"]
+[ext_resource type="PackedScene" uid="uid://dv5itr88umctj" path="res://scenes/floor_spring.tscn" id="10_h1l60"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
-texture = ExtResource("4_vldhh")
+texture = ExtResource("4_rrloc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -19,7 +20,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
-texture = ExtResource("5_65b3b")
+texture = ExtResource("5_utaxe")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -65,19 +66,8 @@ _data = {
 "new_animation": SubResource("Animation_ybq0l")
 }
 
-[node name="Level0" type="Node2D"]
-process_mode = 3
-script = ExtResource("1_wni04")
-
-[node name="lbl_tutorial" type="Label" parent="."]
-offset_left = 2.0
-offset_top = 63.0
-offset_right = 1152.0
-offset_bottom = 167.0
-theme_override_fonts/font = ExtResource("2_ptgup")
-text = "[CLICK TO MOVE THE GHOST AROUND]"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_2xhev")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)
@@ -96,7 +86,7 @@ color = Color(0, 0, 0, 0.811765)
 modulate = Color(0.9, 0.61, 0.23, 0.2)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
-texture = ExtResource("3_t3sbq")
+texture = ExtResource("3_25pen")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -106,7 +96,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 5, 0, 720919, 5, 0, 720907, 5, 0)
 metadata/_edit_lock_ = true
 
-[node name="ghost" parent="." instance=ExtResource("6_ceskj")]
+[node name="ghost" parent="." instance=ExtResource("6_uk3rb")]
 process_mode = 3
 z_index = 10
 position = Vector2(307, 164)
@@ -125,24 +115,24 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 1151.0
 offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("2_ptgup")
+theme_override_fonts/font = ExtResource("2_krrc6")
 theme_override_font_sizes/font_size = 24
 text = "FRUITS: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="portal" parent="." instance=ExtResource("7_af6eg")]
+[node name="portal" parent="." instance=ExtResource("7_82ft6")]
 z_index = -1
-position = Vector2(424, 346)
+position = Vector2(569, 153)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
 
-[node name="character" parent="." instance=ExtResource("8_vafrd")]
-position = Vector2(546, 368)
-type = 2
+[node name="character" parent="." instance=ExtResource("8_7jms6")]
+position = Vector2(458, 368)
+type = 3
 
-[node name="fruit" parent="." instance=ExtResource("9_urn4o")]
+[node name="fruit" parent="." instance=ExtResource("9_bgmug")]
 position = Vector2(711, 368)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
@@ -150,5 +140,8 @@ speed_scale = 0.1
 libraries = {
 "": SubResource("AnimationLibrary_wclnq")
 }
+
+[node name="floor_spring" parent="." instance=ExtResource("10_h1l60")]
+position = Vector2(655, 368)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
