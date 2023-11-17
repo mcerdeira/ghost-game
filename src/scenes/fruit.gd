@@ -21,7 +21,7 @@ func _on_body_entered(body):
 		is_on = false
 		Global.FRUITS += 1
 		if Global.level_name == "Level0":
-			Global.next_tutorial()
+			Global.next_tutorial("fruit")
 		if Global.FRUITS >= Global.TOTAL_FRUITS:
 			Global.PORTAL.set_on()
 			

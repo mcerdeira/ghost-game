@@ -67,7 +67,6 @@ _data = {
 }
 
 [node name="Level4" type="Node2D"]
-process_mode = 3
 script = ExtResource("1_x4jbp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -94,7 +93,7 @@ metadata/_edit_lock_ = true
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(786443, 5, 0, 720907, 5, 0, 720921, 5, 0, 786457, 5, 0, 851979, 5, 0, 917515, 5, 0, 983051, 5, 0, 1048587, 5, 0, 851993, 5, 0, 917529, 5, 0, 983065, 5, 0, 1048601, 5, 0)
+layer_0/tile_data = PackedInt32Array(786443, 5, 0, 720907, 5, 0, 720921, 5, 0, 786457, 5, 0, 851979, 5, 0, 917515, 5, 0, 983051, 5, 0, 1048587, 5, 0, 851993, 5, 0, 917529, 5, 0, 983065, 5, 0, 1048601, 5, 0, 655377, 0, 0, 655378, 0, 0, 589842, 0, 0, 589841, 0, 0, 589843, 0, 0, 655379, 0, 0, 655380, 0, 0, 589844, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="ghost" parent="." instance=ExtResource("6_5kdpw")]
@@ -131,7 +130,7 @@ environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_46xac")]
 position = Vector2(370, 329)
-type = 2
+type = 1
 
 [node name="fruit" parent="." instance=ExtResource("9_xxvae")]
 position = Vector2(816, 326)
@@ -144,5 +143,11 @@ libraries = {
 
 [node name="moving_plat" parent="." instance=ExtResource("10_c5v8c")]
 position = Vector2(432, 368)
+
+[node name="fruit2" parent="." instance=ExtResource("9_xxvae")]
+position = Vector2(579, 271)
+
+[node name="fruit3" parent="." instance=ExtResource("9_xxvae")]
+position = Vector2(640, 271)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

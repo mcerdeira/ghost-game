@@ -185,7 +185,7 @@ func shoot(delta, type):
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
 	if mode == "npc" and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if Global.level_name == "Level0":
-			Global.next_tutorial()
+			Global.next_tutorial("right-click")
 		
 		mode = "player"
 		Global.play_sound(Global.POSSES_SFX)

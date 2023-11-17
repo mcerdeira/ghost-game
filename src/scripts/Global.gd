@@ -60,18 +60,31 @@ var LEVELS = [
 	"res://scenes/levels/level0.tscn",
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
-	"res://scenes/levels/level3.tscn"
+	"res://scenes/levels/level6.tscn",
+	"res://scenes/levels/level3.tscn",
+	"res://scenes/levels/level4.tscn",
+	"res://scenes/levels/level5.tscn",
 ]
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	POSSES_SFX = preload("res://sfx/172206__fins__teleport.wav")
 
-func next_tutorial():
-	Global.tutorial_lbl.text = Global.TUTORIALS[Global.tutorial_index]
-	Global.tutorial_index += 1
+func next_tutorial(action):
+	if action == "click" and (Global.tutorial_index == 1 or Global.tutorial_index == 0):
+		Global.tutorial_lbl.text = Global.TUTORIALS[Global.tutorial_index]
+		Global.tutorial_index += 1
+	
+	if action == "right-click" and Global.tutorial_index == 2:
+		Global.tutorial_lbl.text = Global.TUTORIALS[Global.tutorial_index]
+		Global.tutorial_index += 1
+		
+	if action == "fruit" and Global.tutorial_index == 3:
+		Global.tutorial_lbl.text = Global.TUTORIALS[Global.tutorial_index]
+		Global.tutorial_index += 1
+		
 	if Global.tutorial_index > Global.TUTORIALS.size() - 1:
-		Global.tutorial_index = 0
+		Global.tutorial_index = Global.TUTORIALS.size() - 1
 
 func init():
 	GHOST = null

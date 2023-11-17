@@ -48,7 +48,7 @@ func _process(delta):
 		if !possesing:
 			if Input.is_action_just_pressed("click"):
 				if Global.level_name == "Level0":
-					Global.next_tutorial()
+					Global.next_tutorial("click")
 				
 				dest = get_global_mouse_position()
 				custom_look_at(dest)

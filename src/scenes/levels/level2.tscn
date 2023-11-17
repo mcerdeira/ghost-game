@@ -84,7 +84,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.811765)
 
 [node name="background" type="Sprite2D" parent="."]
-modulate = Color(0.9, 0.61, 0.23, 0.2)
+modulate = Color(1, 0, 0, 0.207843)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
 texture = ExtResource("2_iokmp")
@@ -134,6 +134,9 @@ position = Vector2(528, 336)
 [node name="floor7" parent="." instance=ExtResource("7_mj055")]
 position = Vector2(496, 336)
 
+[node name="floor9" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(464, 336)
+
 [node name="floor4" parent="." instance=ExtResource("7_mj055")]
 position = Vector2(592, 336)
 
@@ -148,6 +151,9 @@ position = Vector2(848, 304)
 
 [node name="floor8" parent="." instance=ExtResource("7_mj055")]
 position = Vector2(816, 304)
+
+[node name="floor10" parent="." instance=ExtResource("7_mj055")]
+position = Vector2(784, 304)
 
 [node name="character" parent="." instance=ExtResource("6_mv56c")]
 position = Vector2(259, 176)
