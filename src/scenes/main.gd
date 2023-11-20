@@ -3,6 +3,7 @@ var speed = 2
 var win_ttl = 3
 
 func _ready():
+	Global.MUSIC_PLAYING = true
 	if !Global.MUSIC_PLAYING:
 		Global.MUSIC_PLAYING = true
 		Music.play(Global.MainTheme)

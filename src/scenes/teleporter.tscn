@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwwwdod4c44w8"]
+
+[ext_resource type="Texture2D" uid="uid://b71ko1wcou8b8" path="res://sprites/teleporter.png" id="1_7xcus"]
+[ext_resource type="Script" path="res://scenes/teleporter.gd" id="1_remrw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_la24u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7xcus")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_78kcb"]
+radius = 22.0
+height = 86.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nfnha"]
+
+[node name="teleporter" type="Area2D"]
+z_index = -9
+script = ExtResource("1_remrw")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_la24u")
+autoplay = "default"
+frame_progress = 0.851709
+
+[node name="collider" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_78kcb")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nfnha")
+position = Vector2(14, 0)
+amount = 90
+lifetime = 0.5
+speed_scale = 6.17
+explosiveness = 0.9
+randomness = 1.0
+lifetime_randomness = 0.8
+gravity = Vector2(-980, 0)
+initial_velocity_max = 1.95
+angular_velocity_min = 457.55
+angular_velocity_max = 457.55
+orbit_velocity_min = -105.26
+orbit_velocity_max = 521.0
+linear_accel_max = 100.0
+radial_accel_min = 74.75
+radial_accel_max = 74.75
+tangential_accel_min = -100.0
+tangential_accel_max = 50.69
+damping_min = 75.758
+damping_max = 80.808
+scale_amount_max = 3.35
+color = Color(0.40625, 0.980469, 0.0273438, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

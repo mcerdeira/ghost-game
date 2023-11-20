@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://vxvow0sd56k4"]
+[gd_scene load_steps=8 format=3 uid="uid://vxvow0sd56k4"]
 
 [ext_resource type="Script" path="res://scenes/moving_plat.gd" id="1_cwmde"]
+[ext_resource type="Script" path="res://scenes/moving_platform.gd" id="1_y82u2"]
 [ext_resource type="Texture2D" uid="uid://bkrnehear5d0" path="res://sprites/moving_plat_3.png" id="2_nac3b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rqct"]
@@ -40,6 +41,7 @@ _data = {
 }
 
 [node name="moving_plat" type="Node2D"]
+script = ExtResource("1_y82u2")
 
 [node name="plat" type="AnimatableBody2D" parent="."]
 script = ExtResource("1_cwmde")

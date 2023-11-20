@@ -14,6 +14,7 @@ var idle_timer_total = 5
 var idle_timer = idle_timer_total
 
 func _ready():
+	add_to_group("interactuable")
 	add_to_group("npc")
 	set_sprite()
 
