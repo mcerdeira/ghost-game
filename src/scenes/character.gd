@@ -143,8 +143,7 @@ func jump(delta):
 		velocity.y = jump_speed
 	
 func mega_jump():
-	if is_on_floor():
-		velocity.y = jump_speed * 2
+	velocity.y = jump_speed * 2
 	
 func sleep(delta):
 	$Sleep.visible = true

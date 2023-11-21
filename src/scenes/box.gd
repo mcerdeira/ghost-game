@@ -20,8 +20,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func mega_jump():
-	if is_on_floor():
-		velocity.y = jump_speed * 2
+	velocity.y = jump_speed * 2
 	
 func teleport(pos):
 	global_position = pos

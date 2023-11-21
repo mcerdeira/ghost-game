@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4lwufhu6l7tk"]
+
+[ext_resource type="Script" path="res://scenes/fire_emiter.gd" id="1_vrjv0"]
+
+[node name="fire_emiter" type="Node2D"]
+script = ExtResource("1_vrjv0")

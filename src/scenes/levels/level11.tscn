@@ -1,21 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmrg6ncdmyrgw"]
+[gd_scene load_steps=19 format=3 uid="uid://cd68ibghwps8v"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_hc7ys"]
-[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_di4p3"]
-[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_klv2d"]
-[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_2omnw"]
-[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_m7d6p"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_hdcxj"]
-[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="7_omj66"]
-[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_xe0a8"]
-[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_37kx8"]
-[ext_resource type="PackedScene" uid="uid://81xnnqebi3mp" path="res://scenes/box.tscn" id="10_mlvjh"]
-[ext_resource type="PackedScene" uid="uid://dv5itr88umctj" path="res://scenes/floor_spring.tscn" id="11_2iank"]
-[ext_resource type="PackedScene" uid="uid://vxvow0sd56k4" path="res://scenes/moving_plat.tscn" id="13_6ir4j"]
-[ext_resource type="PackedScene" uid="uid://dwwwdod4c44w8" path="res://scenes/teleporter.tscn" id="14_4xcq3"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_xcoqa"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_xwfxr"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_pbvqn"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_1qdmu"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_381r4"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_63i2g"]
+[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="7_ncmfa"]
+[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_oh217"]
+[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_dj3d3"]
+[ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="9_ww587"]
+[ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="10_r3viy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
-texture = ExtResource("3_klv2d")
+texture = ExtResource("3_pbvqn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -23,7 +21,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
-texture = ExtResource("4_2omnw")
+texture = ExtResource("4_1qdmu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -69,8 +67,8 @@ _data = {
 "new_animation": SubResource("Animation_ybq0l")
 }
 
-[node name="Level10" type="Node2D"]
-script = ExtResource("1_hc7ys")
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_xcoqa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)
@@ -89,17 +87,17 @@ color = Color(0, 0, 0, 0.811765)
 modulate = Color(0.9, 0.61, 0.23, 0.2)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
-texture = ExtResource("2_di4p3")
+texture = ExtResource("2_xwfxr")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786447, 5, 0, 786449, 5, 0, 786451, 5, 0, 786452, 5, 0, 786453, 5, 0, 720907, 5, 0, 524316, 0, 0, 524317, 0, 0, 786454, 5, 0, 786456, 5, 0, 786457, 5, 0, 786458, 5, 0, 851991, 5, 0, 786448, 5, 0, 786446, 5, 0, 786459, 5, 0, 786460, 5, 0, 786461, 5, 0, 786462, 5, 0, 786463, 5, 0)
+layer_0/tile_data = PackedInt32Array(524294, 5, 0, 524295, 5, 0, 524296, 5, 0, 524297, 5, 0, 524298, 5, 0, 524299, 5, 0, 524300, 5, 0, 524301, 5, 0, 524303, 5, 0, 524304, 5, 0, 524305, 5, 0, 524306, 5, 0, 524307, 5, 0, 524308, 5, 0, 524309, 5, 0, 524310, 5, 0, 524311, 5, 0, 524312, 5, 0, 524313, 5, 0, 524314, 5, 0, 524315, 5, 0, 458758, 5, 0, 458779, 5, 0, 851974, 0, 0, 851995, 0, 0, 917531, 0, 0, 917530, 0, 0, 917529, 0, 0, 917528, 0, 0, 917527, 0, 0, 917526, 0, 0, 917525, 0, 0, 917524, 0, 0, 917523, 0, 0, 917522, 0, 0, 917521, 0, 0, 917520, 0, 0, 917519, 0, 0, 917518, 0, 0, 917517, 0, 0, 917516, 0, 0, 917515, 0, 0, 917514, 0, 0, 917513, 0, 0, 917512, 0, 0, 917511, 0, 0, 917510, 0, 0, 589841, 0, 0, 655377, 0, 0, 720913, 0, 0, 786449, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="ghost" parent="." instance=ExtResource("5_m7d6p")]
+[node name="ghost" parent="." instance=ExtResource("5_381r4")]
 process_mode = 3
 z_index = 10
 position = Vector2(307, 164)
@@ -118,26 +116,14 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 1151.0
 offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("6_hdcxj")
+theme_override_fonts/font = ExtResource("6_63i2g")
 theme_override_font_sizes/font_size = 24
 text = "FRUITS: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="portal" parent="." instance=ExtResource("7_omj66")]
-z_index = -1
-position = Vector2(678, 364)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
-
-[node name="character" parent="." instance=ExtResource("8_xe0a8")]
-position = Vector2(550, 368)
-direction = "left"
-type = 4
-
-[node name="fruit" parent="." instance=ExtResource("9_37kx8")]
-position = Vector2(996, 366)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
@@ -145,23 +131,28 @@ libraries = {
 "": SubResource("AnimationLibrary_wclnq")
 }
 
-[node name="box" parent="." instance=ExtResource("10_mlvjh")]
-position = Vector2(453, 368)
+[node name="character" parent="." instance=ExtResource("8_oh217")]
+position = Vector2(460, 432)
+type = 3
 
-[node name="floor_spring" parent="." instance=ExtResource("11_2iank")]
-position = Vector2(400, 368)
+[node name="fruit" parent="." instance=ExtResource("9_dj3d3")]
+position = Vector2(256, 384)
 
-[node name="moving_plat" parent="." instance=ExtResource("13_6ir4j")]
-position = Vector2(320, 184)
-start_on = false
+[node name="character2" parent="." instance=ExtResource("8_oh217")]
+position = Vector2(368, 240)
+type = 2
 
-[node name="teleporter" parent="." instance=ExtResource("14_4xcq3")]
-position = Vector2(400, 139)
-_teleporter = NodePath("../teleporter2")
+[node name="character3" parent="." instance=ExtResource("8_oh217")]
+position = Vector2(744, 240)
+type = 1
 
-[node name="teleporter2" parent="." instance=ExtResource("14_4xcq3")]
-position = Vector2(924, 164)
-scale = Vector2(-1, 1)
-_teleporter = NodePath("../teleporter")
+[node name="floor" parent="." instance=ExtResource("9_ww587")]
+position = Vector2(560, 432)
+
+[node name="switch" parent="." instance=ExtResource("10_r3viy")]
+position = Vector2(816, 176)
+
+[node name="portal" parent="." instance=ExtResource("7_ncmfa")]
+position = Vector2(816, 425)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

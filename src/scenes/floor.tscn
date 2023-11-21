@@ -1,16 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfpt5ssvu2gky"]
+[gd_scene load_steps=6 format=3 uid="uid://dfpt5ssvu2gky"]
 
 [ext_resource type="Script" path="res://scenes/floor.gd" id="1_5fpkb"]
 [ext_resource type="Texture2D" uid="uid://ff5rxqi1d057" path="res://sprites/floor_spr_3.png" id="1_m3ur2"]
+[ext_resource type="Texture2D" uid="uid://dkgt5ce12jpr6" path="res://sprites/fire_floor.png" id="2_bb785"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rqct"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_bb785")
+}],
+"loop": true,
+"name": &"fire_door",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_m3ur2")
 }],
 "loop": true,
-"name": &"default",
+"name": &"red_door",
 "speed": 5.0
 }]
 
@@ -22,6 +31,7 @@ script = ExtResource("1_5fpkb")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7rqct")
+animation = &"fire_door"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lu05r")

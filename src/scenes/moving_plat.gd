@@ -5,5 +5,8 @@ var ttl_total = 1.1
 var ttl = ttl_total
 var start_on = true
 
+func teleport(pos):
+	global_position = pos
+
 func _ready():
 	add_to_group("moving_platform")

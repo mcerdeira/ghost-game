@@ -1,8 +1,10 @@
 extends StaticBody2D
 var where = null
+@export var type = "red_door"
 
 func _ready():
-	add_to_group("red_door")
+	add_to_group(type)
+	$sprite.animation = type
 	
 func _physics_process(delta):
 	if where:

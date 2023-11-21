@@ -4,6 +4,9 @@ var bodies = []
 
 func _ready():
 	add_to_group("red_switch")
+	
+func _physics_process(delta):
+	var things = get_overlapping_areas()
 
 func _on_body_entered(body):
 	if is_on and body.is_in_group("npc") or body.is_in_group("interactuable"):

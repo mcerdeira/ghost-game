@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bca65oaspoiya"]
+
+[ext_resource type="Script" path="res://scenes/fire_switch.gd" id="1_njvf1"]
+[ext_resource type="Texture2D" uid="uid://c0jjdhrupen8s" path="res://sprites/fire_switch.png" id="2_c0he5"]
+[ext_resource type="Texture2D" uid="uid://b6ptqvshsjwkw" path="res://sprites/fire_switch2.png" id="3_x42k4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86l3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c0he5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x42k4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4573d"]
+size = Vector2(11, 16)
+
+[node name="fire_switch" type="Area2D"]
+script = ExtResource("1_njvf1")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_86l3i")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_4573d")
