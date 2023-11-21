@@ -3,10 +3,11 @@ var mode = "npc"
 var gravity = 10.0
 var speed = 75.0
 var jump_speed = -300.0
-var direction = "right"
+@export var direction = "right"
 var absorved_ttl = 0
 var is_absorved = false
 var first_time = true
+var push_force = 80.0
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -17,6 +18,9 @@ func _ready():
 	add_to_group("interactuable")
 	add_to_group("npc")
 	set_sprite()
+	
+func teleport(pos):
+	global_position = pos
 
 func _physics_process(delta):
 	if Global.WIN:
@@ -44,12 +48,19 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
+	if type == Global.npc_types.PUSHY:
+		for i in get_slide_collision_count():
+			var c = get_slide_collision(i)
+			var col = c.get_collider() 
+			if col is CharacterBody2D:
+				col.pushed(speed, direction)
+	
 func change_mode(_mode):
 	first_time = true
 	mode = _mode
 
 func process_npc(delta):
-	if type == Global.npc_types.WALKY:
+	if type == Global.npc_types.WALKY or type == Global.npc_types.PUSHY: 
 		idle_timer = 0
 	
 	if first_time and type == Global.npc_types.SLEEPY:
@@ -121,7 +132,7 @@ func do_action(delta):
 		if type == Global.npc_types.GRABY:
 			pass
 		if type == Global.npc_types.PUSHY:
-			pass
+			walk(delta)
 		if type == Global.npc_types.SLEEPY:
 			sleep(delta)
 		if type == Global.npc_types.WALKY:
@@ -151,8 +162,9 @@ func swap_direction():
 	
 func walk(delta):
 	var moving = false
-	if is_on_wall():
-		direction = swap_direction()
+	if type == Global.npc_types.WALKY:
+		if is_on_wall():
+			direction = swap_direction()
 	
 	if direction == "left":
 		moving = true

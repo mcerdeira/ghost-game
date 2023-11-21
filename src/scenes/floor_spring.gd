@@ -16,7 +16,7 @@ func _physics_process(delta):
 			$sprite.position = $down.position
 
 func _on_char_detect_body_entered(body):
-	if !is_on and body.is_in_group("npc"):
+	if !is_on and body.is_in_group("npc") or body.is_in_group("interactuable"):
 		char = body
 		goup_ttl = 0.09
 		is_on = true

@@ -1,19 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjal6vcliiisx"]
+[gd_scene load_steps=23 format=3 uid="uid://drc3sim4obhjt"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_3hhvr"]
-[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_qks1b"]
-[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_murwu"]
-[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_x6wer"]
-[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_x1jo2"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_t6c73"]
-[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="7_7gjh4"]
-[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_xub30"]
-[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_tvuf4"]
-[ext_resource type="PackedScene" uid="uid://vxvow0sd56k4" path="res://scenes/moving_plat.tscn" id="10_755c0"]
-[ext_resource type="PackedScene" uid="uid://dwwwdod4c44w8" path="res://scenes/teleporter.tscn" id="11_wt0l5"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_lgyse"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_dch43"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_btws6"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_83q3w"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_s18js"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_d6wig"]
+[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="7_mm01e"]
+[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_mk15r"]
+[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_1j0ok"]
+[ext_resource type="PackedScene" uid="uid://81xnnqebi3mp" path="res://scenes/box.tscn" id="10_raysh"]
+[ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="11_8qltc"]
+[ext_resource type="PackedScene" uid="uid://dv5itr88umctj" path="res://scenes/floor_spring.tscn" id="11_c3xj5"]
+[ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="12_jkorg"]
+[ext_resource type="PackedScene" uid="uid://vxvow0sd56k4" path="res://scenes/moving_plat.tscn" id="13_e35rt"]
+[ext_resource type="PackedScene" uid="uid://dwwwdod4c44w8" path="res://scenes/teleporter.tscn" id="14_jtp3a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
-texture = ExtResource("3_murwu")
+texture = ExtResource("3_btws6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -21,7 +25,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
-texture = ExtResource("4_x6wer")
+texture = ExtResource("4_83q3w")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -67,8 +71,8 @@ _data = {
 "new_animation": SubResource("Animation_ybq0l")
 }
 
-[node name="Level7" type="Node2D"]
-script = ExtResource("1_3hhvr")
+[node name="Level9" type="Node2D"]
+script = ExtResource("1_lgyse")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)
@@ -84,21 +88,20 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.811765)
 
 [node name="background" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 0.207843)
-z_index = -10
+modulate = Color(0.9, 0.61, 0.23, 0.2)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
-texture = ExtResource("2_qks1b")
+texture = ExtResource("2_dch43")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(786443, 5, 0, 720907, 5, 0, 851979, 5, 0, 917515, 5, 0, 983051, 5, 0, 1048587, 5, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0)
+layer_0/tile_data = PackedInt32Array(786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 5, 0, 720919, 5, 0, 720907, 5, 0, 524316, 0, 0, 524317, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="ghost" parent="." instance=ExtResource("5_x1jo2")]
+[node name="ghost" parent="." instance=ExtResource("5_s18js")]
 process_mode = 3
 z_index = 10
 position = Vector2(307, 164)
@@ -117,22 +120,25 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 1151.0
 offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("6_t6c73")
+theme_override_fonts/font = ExtResource("6_d6wig")
 theme_override_font_sizes/font_size = 24
 text = "FRUITS: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="portal" parent="." instance=ExtResource("7_7gjh4")]
+[node name="portal" parent="." instance=ExtResource("7_mm01e")]
 z_index = -1
-position = Vector2(366, 318)
+position = Vector2(714, 364)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
 
-[node name="character" parent="." instance=ExtResource("8_xub30")]
-position = Vector2(370, 329)
+[node name="character" parent="." instance=ExtResource("8_mk15r")]
+position = Vector2(551, 368)
 type = 2
+
+[node name="fruit" parent="." instance=ExtResource("9_1j0ok")]
+position = Vector2(675, 368)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
@@ -140,19 +146,35 @@ libraries = {
 "": SubResource("AnimationLibrary_wclnq")
 }
 
-[node name="moving_plat" parent="." instance=ExtResource("10_755c0")]
-position = Vector2(432, 368)
+[node name="box" parent="." instance=ExtResource("10_raysh")]
+position = Vector2(489, 216)
 
-[node name="teleporter" parent="." instance=ExtResource("11_wt0l5")]
-position = Vector2(578, 302)
+[node name="floor_spring" parent="." instance=ExtResource("11_c3xj5")]
+position = Vector2(400, 368)
+
+[node name="floor" parent="." instance=ExtResource("12_jkorg")]
+position = Vector2(639, 368)
+
+[node name="moving_plat" parent="." instance=ExtResource("13_e35rt")]
+position = Vector2(320, 184)
+start_on = false
+
+[node name="teleporter" parent="." instance=ExtResource("14_jtp3a")]
+position = Vector2(571, 137)
 _teleporter = NodePath("../teleporter2")
 
-[node name="teleporter2" parent="." instance=ExtResource("11_wt0l5")]
-position = Vector2(751, 115)
+[node name="teleporter2" parent="." instance=ExtResource("14_jtp3a")]
+position = Vector2(924, 164)
 scale = Vector2(-1, 1)
 _teleporter = NodePath("../teleporter")
 
-[node name="fruit" parent="." instance=ExtResource("9_tvuf4")]
-position = Vector2(867, 141)
+[node name="switch" parent="." instance=ExtResource("11_8qltc")]
+position = Vector2(926, 240)
+
+[node name="moving_plat2" parent="." instance=ExtResource("13_e35rt")]
+position = Vector2(363, 580)
+
+[node name="box2" parent="." instance=ExtResource("10_raysh")]
+position = Vector2(380, 470)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

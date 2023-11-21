@@ -16,6 +16,9 @@ func _ready():
 	Global.tutorial_lbl = $lbl_tutorial
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("WIN"):
+		Global.WIN = true
+	
 	if Input.is_action_just_pressed("restart"):
 		Global.init()
 		get_tree().reload_current_scene()
