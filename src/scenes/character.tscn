@@ -1,38 +1,133 @@
-[gd_scene load_steps=15 format=3 uid="uid://7r6dcibmyspx"]
+[gd_scene load_steps=35 format=3 uid="uid://7r6dcibmyspx"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
-[ext_resource type="Texture2D" uid="uid://bx015ida3lg2f" path="res://sprites/zombie_spr_0.png" id="2_j87p0"]
-[ext_resource type="Texture2D" uid="uid://bflnc63m3mdkn" path="res://sprites/zombie_spr_1.png" id="3_qmh23"]
-[ext_resource type="Texture2D" uid="uid://dx2b37uh7dirw" path="res://sprites/zombie_spr_2.png" id="4_4fodm"]
-[ext_resource type="Texture2D" uid="uid://buw5m0yp8wbxj" path="res://sprites/zombie_spr_3.png" id="5_8yhj0"]
+[ext_resource type="Texture2D" uid="uid://d4lubcnokbtaf" path="res://sprites/jumpy_0.png" id="2_8vqtl"]
+[ext_resource type="Texture2D" uid="uid://sec8ksw5hkpi" path="res://sprites/graby_0.png" id="2_41xdb"]
+[ext_resource type="Texture2D" uid="uid://cdeu0fdnily4n" path="res://sprites/flamy_0.png" id="2_j2t2x"]
+[ext_resource type="Texture2D" uid="uid://dprmf3bjhgwha" path="res://sprites/sleepy_0.png" id="2_jnqlo"]
+[ext_resource type="Texture2D" uid="uid://csqvm6kj8f3m" path="res://sprites/sleepy_1.png" id="3_a1okq"]
+[ext_resource type="Texture2D" uid="uid://bj0aj0es1feqs" path="res://sprites/flamy_1.png" id="3_nayw4"]
+[ext_resource type="Texture2D" uid="uid://bw2iwuvkcxtsv" path="res://sprites/graby_1.png" id="3_of2mm"]
+[ext_resource type="Texture2D" uid="uid://dd5hxov1c3ogq" path="res://sprites/jumpy_1.png" id="3_qlp36"]
+[ext_resource type="Texture2D" uid="uid://brueeiohceh6k" path="res://sprites/jumpy_2.png" id="4_80peu"]
+[ext_resource type="Texture2D" uid="uid://bvgu012frlshs" path="res://sprites/sleepy_2.png" id="4_dbwgt"]
+[ext_resource type="Texture2D" uid="uid://wiltq3y020h5" path="res://sprites/flamy_2.png" id="4_eopy2"]
+[ext_resource type="Texture2D" uid="uid://htwl2vwl4jkw" path="res://sprites/graby_2.png" id="4_jn1na"]
+[ext_resource type="Texture2D" uid="uid://p2bs652011kj" path="res://sprites/graby_3.png" id="5_j1fwb"]
+[ext_resource type="Texture2D" uid="uid://d286uiuy4674w" path="res://sprites/flamy_3.png" id="5_o450g"]
+[ext_resource type="Texture2D" uid="uid://do4wejummue7p" path="res://sprites/sleepy_3.png" id="5_qafjs"]
+[ext_resource type="Texture2D" uid="uid://dlcc3qm1pronh" path="res://sprites/jumpy_3.png" id="5_rahwa"]
 [ext_resource type="Texture2D" uid="uid://bvwah4xbherm6" path="res://sprites/sleep.png" id="6_nb65x"]
 [ext_resource type="Script" path="res://scenes/squish_area.gd" id="7_smm5e"]
+[ext_resource type="Texture2D" uid="uid://cyah2t72k7suk" path="res://sprites/pushy_0.png" id="10_objm8"]
+[ext_resource type="Texture2D" uid="uid://kpuxliphorex" path="res://sprites/pushy_1.png" id="11_bqxnt"]
+[ext_resource type="Texture2D" uid="uid://c6dnuyq4r3ywd" path="res://sprites/pushy_2.png" id="12_da4mg"]
+[ext_resource type="Texture2D" uid="uid://dma3d7sj8wbha" path="res://sprites/pushy_3.png" id="13_tlps4"]
+[ext_resource type="Texture2D" uid="uid://dulf7o4bne1g" path="res://sprites/walky_0.png" id="14_ydohl"]
+[ext_resource type="Texture2D" uid="uid://d4dlhich3jnrv" path="res://sprites/walky_1.png" id="15_sx7xw"]
+[ext_resource type="Texture2D" uid="uid://t8nkdrk2c8ia" path="res://sprites/walky_2.png" id="16_tr3rd"]
+[ext_resource type="Texture2D" uid="uid://dd0gr8r2ekxj" path="res://sprites/walky_3.png" id="17_gnfnl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohtx4"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j2t2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nayw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eopy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o450g")
+}],
+"loop": true,
+"name": &"flamy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_41xdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_of2mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jn1na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j1fwb")
+}],
+"loop": true,
+"name": &"graby",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8vqtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qlp36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_80peu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rahwa")
+}],
 "loop": true,
 "name": &"jumpy",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_j87p0")
+"texture": ExtResource("10_objm8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qmh23")
+"texture": ExtResource("11_bqxnt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_4fodm")
+"texture": ExtResource("12_da4mg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8yhj0")
+"texture": ExtResource("13_tlps4")
+}],
+"loop": true,
+"name": &"pushy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jnqlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a1okq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dbwgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qafjs")
 }],
 "loop": true,
 "name": &"sleepy",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ydohl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sx7xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tr3rd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gnfnl")
+}],
 "loop": true,
 "name": &"walky",
 "speed": 5.0
@@ -101,7 +196,7 @@ script = ExtResource("1_8fn81")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ohtx4")
-animation = &"sleepy"
+animation = &"flamy"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)

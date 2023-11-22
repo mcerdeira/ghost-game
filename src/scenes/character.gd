@@ -113,17 +113,17 @@ func process_player(delta):
 	
 func set_sprite():
 	if type == Global.npc_types.FLAMY:
-		pass
+		$sprite.animation = "flamy"
 	if type == Global.npc_types.JUMPY:
-		pass
+		$sprite.animation = "jumpy"
 	if type == Global.npc_types.GRABY:
-		pass
+		$sprite.animation = "graby"
 	if type == Global.npc_types.PUSHY:
-		pass
+		$sprite.animation = "pushy"
 	if type == Global.npc_types.SLEEPY:
-		pass
+		$sprite.animation = "sleepy"
 	if type == Global.npc_types.WALKY:
-		pass
+		$sprite.animation = "walky"
 		
 func absorved():
 	is_absorved = true
