@@ -93,7 +93,7 @@ metadata/_edit_lock_ = true
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 5, 0, 720919, 5, 0, 720907, 5, 0)
+layer_0/tile_data = PackedInt32Array(786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 5, 0, 720919, 5, 0, 720907, 5, 0, 851988, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="ghost" parent="." instance=ExtResource("6_uk3rb")]
@@ -142,6 +142,6 @@ libraries = {
 }
 
 [node name="floor_spring" parent="." instance=ExtResource("10_h1l60")]
-position = Vector2(655, 368)
+position = Vector2(656, 400)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

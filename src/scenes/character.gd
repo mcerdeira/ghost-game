@@ -152,6 +152,7 @@ func mega_jump():
 	velocity.y = jump_speed * 2
 	
 func sleep(delta):
+	$sprite.stop()
 	$Sleep.visible = true
 	$SleepAnimation.play("new_animation")
 	

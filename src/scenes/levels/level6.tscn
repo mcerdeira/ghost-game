@@ -123,13 +123,13 @@ vertical_alignment = 1
 
 [node name="portal" parent="." instance=ExtResource("7_g3yr2")]
 z_index = -1
-position = Vector2(366, 318)
+position = Vector2(366, 333)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_x1gcw")]
-position = Vector2(370, 329)
+position = Vector2(367, 336)
 type = 2
 
 [node name="fruit" parent="." instance=ExtResource("9_phoob")]

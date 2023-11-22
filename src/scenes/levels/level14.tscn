@@ -154,7 +154,7 @@ position = Vector2(94, 336)
 position = Vector2(-1, -40)
 
 [node name="fire_switch" parent="." instance=ExtResource("12_5hfcq")]
-position = Vector2(105, 191)
+position = Vector2(94, 191)
 rotation = 3.14159
 
 [node name="box3" parent="." instance=ExtResource("8_kt1h2")]

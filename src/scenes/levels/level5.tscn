@@ -94,7 +94,7 @@ metadata/_edit_lock_ = true
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(786443, 5, 0, 720907, 5, 0, 720921, 5, 0, 786457, 5, 0, 851979, 5, 0, 917515, 5, 0, 983051, 5, 0, 1048587, 5, 0, 851993, 5, 0, 917529, 5, 0, 983065, 5, 0, 1048601, 5, 0)
+layer_0/tile_data = PackedInt32Array(786443, 5, 0, 720907, 5, 0, 720921, 5, 0, 786457, 5, 0, 851979, 5, 0, 917515, 5, 0, 983051, 5, 0, 1048587, 5, 0, 851993, 5, 0, 917529, 5, 0, 983065, 5, 0, 1048601, 5, 0, 851986, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="ghost" parent="." instance=ExtResource("5_dvup1")]
@@ -149,6 +149,6 @@ position = Vector2(432, 368)
 position = Vector2(582, 175)
 
 [node name="floor_spring" parent="." instance=ExtResource("11_cki5d")]
-position = Vector2(576, 336)
+position = Vector2(592, 400)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
