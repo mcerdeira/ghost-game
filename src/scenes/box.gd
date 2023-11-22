@@ -27,13 +27,18 @@ func _physics_process(delta):
 			
 		move_and_slide()
 	else:
+		$collider.set_deferred("disabled", true)
 		velocity.x = 0
 		velocity.y = 0
 	
 func mega_jump():
 	velocity.y = jump_speed * 2
 	
+func little_jump():
+	velocity.y = jump_speed / 2
+	
 func droped(speed, direction):
+	$collider.set_deferred("disabled", false)
 	velocity.y = jump_speed
 	friction = 0.02
 	pushed(speed * 2, direction)

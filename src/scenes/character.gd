@@ -213,7 +213,7 @@ func grab():
 				get_parent().remove_child(area)
 				add_child(area)
 				area.position.x = 0
-				area.position.y = -30
+				area.position.y = -35
 	else:
 		grabed_obj.grabbed = false
 		remove_child(grabed_obj)
@@ -226,6 +226,9 @@ func grab():
 	
 func shoot(delta, type):
 	pass
+	
+func little_jump():
+	velocity.y = jump_speed / 2
 	
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
 	if mode == "npc" and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:

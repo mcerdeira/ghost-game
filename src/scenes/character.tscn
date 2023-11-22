@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7r6dcibmyspx"]
+[gd_scene load_steps=15 format=3 uid="uid://7r6dcibmyspx"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
 [ext_resource type="Texture2D" uid="uid://bx015ida3lg2f" path="res://sprites/zombie_spr_0.png" id="2_j87p0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dx2b37uh7dirw" path="res://sprites/zombie_spr_2.png" id="4_4fodm"]
 [ext_resource type="Texture2D" uid="uid://buw5m0yp8wbxj" path="res://sprites/zombie_spr_3.png" id="5_8yhj0"]
 [ext_resource type="Texture2D" uid="uid://bvwah4xbherm6" path="res://sprites/sleep.png" id="6_nb65x"]
+[ext_resource type="Script" path="res://scenes/squish_area.gd" id="7_smm5e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohtx4"]
 animations = [{
@@ -91,6 +92,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wep4t"]
 size = Vector2(20, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvj60"]
+size = Vector2(24, 6)
+
 [node name="character" type="CharacterBody2D"]
 platform_on_leave = 2
 script = ExtResource("1_8fn81")
@@ -130,4 +134,12 @@ shape = SubResource("RectangleShape2D_wep4t")
 position = Vector2(-26, 1.5)
 shape = SubResource("RectangleShape2D_wep4t")
 
+[node name="squish_area" type="Area2D" parent="."]
+script = ExtResource("7_smm5e")
+
+[node name="collider" type="CollisionShape2D" parent="squish_area"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_gvj60")
+
 [connection signal="input_event" from="mouse_rec" to="." method="_on_mouse_rec_input_event"]
+[connection signal="body_entered" from="squish_area" to="squish_area" method="_on_body_entered"]

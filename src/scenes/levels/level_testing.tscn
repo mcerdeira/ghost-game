@@ -1,0 +1,149 @@
+[gd_scene load_steps=17 format=3 uid="uid://b34l53xsbmike"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_mqtyu"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_oj4br"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_4fshh"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_gqxu1"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_kna02"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_fr064"]
+[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="7_8n7sy"]
+[ext_resource type="PackedScene" uid="uid://81xnnqebi3mp" path="res://scenes/box.tscn" id="8_irfqg"]
+[ext_resource type="PackedScene" uid="uid://dv5itr88umctj" path="res://scenes/floor_spring.tscn" id="8_tg68w"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
+texture = ExtResource("3_4fshh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
+texture = ExtResource("4_gqxu1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_it710"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+sources/5 = SubResource("TileSetAtlasSource_rudm8")
+sources/0 = SubResource("TileSetAtlasSource_t7atg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02l11"]
+size = Vector2(1179, 670)
+
+[sub_resource type="Environment" id="Environment_oaqbm"]
+background_mode = 3
+ambient_light_source = 2
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.1
+
+[sub_resource type="Animation" id="Animation_ybq0l"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.207843), Color(0.694118, 0.333333, 0.913725, 0.207843), Color(0.231373, 0.619608, 0.427451, 0.207843), Color(0.9, 0.61, 0.23, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wclnq"]
+_data = {
+"new_animation": SubResource("Animation_ybq0l")
+}
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_mqtyu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 326)
+
+[node name="BlackEffect" type="ColorRect" parent="."]
+visible = false
+z_index = 9
+offset_left = -36.0
+offset_top = -32.0
+offset_right = 1195.0
+offset_bottom = 685.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.811765)
+
+[node name="background" type="Sprite2D" parent="."]
+modulate = Color(0.9, 0.61, 0.23, 0.2)
+position = Vector2(553.5, 295)
+scale = Vector2(0.700781, 0.685)
+texture = ExtResource("2_oj4br")
+metadata/_edit_lock_ = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_it710")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(589828, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 589851, 0, 0, 589852, 0, 0, 524316, 0, 0, 458780, 0, 0, 393244, 0, 0, 589827, 0, 0, 524291, 0, 0, 458755, 0, 0, 393219, 0, 0, 589842, 0, 0, 720911, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="ghost" parent="." instance=ExtResource("5_kna02")]
+process_mode = 3
+z_index = 10
+position = Vector2(307, 164)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(579.5, 325)
+shape = SubResource("RectangleShape2D_02l11")
+metadata/_edit_lock_ = true
+
+[node name="lbl_fruits" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 1151.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("6_fr064")
+theme_override_font_sizes/font_size = 24
+text = "FRUITS: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oaqbm")
+
+[node name="background_animation" type="AnimationPlayer" parent="."]
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_wclnq")
+}
+
+[node name="character" parent="." instance=ExtResource("7_8n7sy")]
+position = Vector2(409, 304)
+type = 5
+
+[node name="character2" parent="." instance=ExtResource("7_8n7sy")]
+position = Vector2(773, 304)
+type = 3
+
+[node name="floor_spring" parent="." instance=ExtResource("8_tg68w")]
+position = Vector2(496, 336)
+
+[node name="box" parent="." instance=ExtResource("8_irfqg")]
+position = Vector2(221, 304)
+
+[node name="floor_spring2" parent="." instance=ExtResource("8_tg68w")]
+position = Vector2(311, 246)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

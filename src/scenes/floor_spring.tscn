@@ -24,23 +24,22 @@ size = Vector2(30, 31)
 script = ExtResource("1_b0oal")
 
 [node name="char_detect" type="Area2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -64)
 
 [node name="collider" type="CollisionShape2D" parent="char_detect"]
 position = Vector2(-0.5, 44)
 shape = SubResource("RectangleShape2D_l8sfu")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_7rqct")
 
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yc548")
+
 [node name="up" type="Marker2D" parent="."]
+position = Vector2(0, -32)
 
 [node name="down" type="Marker2D" parent="."]
-position = Vector2(0, 32)
-
-[node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 32.5)
-shape = SubResource("RectangleShape2D_yc548")
 
 [connection signal="body_entered" from="char_detect" to="." method="_on_char_detect_body_entered"]
