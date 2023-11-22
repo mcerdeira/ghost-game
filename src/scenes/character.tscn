@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7r6dcibmyspx"]
+[gd_scene load_steps=13 format=3 uid="uid://7r6dcibmyspx"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
 [ext_resource type="Texture2D" uid="uid://bx015ida3lg2f" path="res://sprites/zombie_spr_0.png" id="2_j87p0"]
@@ -88,6 +88,9 @@ _data = {
 "new_animation": SubResource("Animation_4q2oo")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wep4t"]
+size = Vector2(20, 27)
+
 [node name="character" type="CharacterBody2D"]
 platform_on_leave = 2
 script = ExtResource("1_8fn81")
@@ -116,5 +119,15 @@ texture = ExtResource("6_nb65x")
 libraries = {
 "": SubResource("AnimationLibrary_qypbr")
 }
+
+[node name="grab_area" type="Area2D" parent="."]
+
+[node name="collider_R" type="CollisionShape2D" parent="grab_area"]
+position = Vector2(26, 1.5)
+shape = SubResource("RectangleShape2D_wep4t")
+
+[node name="collider_L" type="CollisionShape2D" parent="grab_area"]
+position = Vector2(-26, 1.5)
+shape = SubResource("RectangleShape2D_wep4t")
 
 [connection signal="input_event" from="mouse_rec" to="." method="_on_mouse_rec_input_event"]

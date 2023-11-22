@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 var is_on = false
 var goup_ttl = 0
 var char = null

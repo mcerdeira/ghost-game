@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4lwufhu6l7tk"]
+[gd_scene load_steps=3 format=3 uid="uid://b4lwufhu6l7tk"]
 
 [ext_resource type="Script" path="res://scenes/fire_emiter.gd" id="1_vrjv0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2xxe"]
+size = Vector2(20, 11)
+
 [node name="fire_emiter" type="Node2D"]
 script = ExtResource("1_vrjv0")
+
+[node name="inhiber" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="inhiber"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_a2xxe")
+
+[connection signal="body_entered" from="inhiber" to="." method="_on_inhiber_body_entered"]
+[connection signal="body_exited" from="inhiber" to="." method="_on_inhiber_body_exited"]

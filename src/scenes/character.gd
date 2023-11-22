@@ -8,6 +8,7 @@ var absorved_ttl = 0
 var is_absorved = false
 var first_time = true
 var push_force = 80.0
+var grabed_obj = null
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -18,6 +19,7 @@ func _ready():
 	add_to_group("interactuable")
 	add_to_group("npc")
 	set_sprite()
+	set_collider()
 	
 func teleport(pos):
 	global_position = pos
@@ -52,7 +54,7 @@ func _physics_process(delta):
 		for i in get_slide_collision_count():
 			var c = get_slide_collision(i)
 			var col = c.get_collider() 
-			if col is CharacterBody2D:
+			if col.is_in_group("interactuable"):
 				col.pushed(speed, direction)
 	
 func change_mode(_mode):
@@ -89,12 +91,16 @@ func process_player(delta):
 			
 		if Input.is_action_pressed("left"):
 			direction = "left"
+			if $sprite.scale.x == 1:
+				set_collider()
 			moving = true
 			velocity.x = -speed
 			$sprite.scale.x = -1
 			un_sleep()
 		elif Input.is_action_pressed("right"):
 			direction = "right"
+			if $sprite.scale.x == -1:
+				set_collider()
 			moving = true
 			velocity.x = speed
 			$sprite.scale.x = 1
@@ -130,7 +136,7 @@ func do_action(delta):
 		if type == Global.npc_types.JUMPY:
 			jump(delta)
 		if type == Global.npc_types.GRABY:
-			pass
+			grab()
 		if type == Global.npc_types.PUSHY:
 			walk(delta)
 		if type == Global.npc_types.SLEEPY:
@@ -153,7 +159,18 @@ func un_sleep():
 	$Sleep.visible = false
 	$SleepAnimation.stop(false)
 	
+
+func set_collider():
+	if type == Global.npc_types.GRABY:
+		if direction == "left":
+			$grab_area/collider_L.set_deferred("disabled", false)
+			$grab_area/collider_R.set_deferred("disabled", true)
+		else:
+			$grab_area/collider_L.set_deferred("disabled", true)
+			$grab_area/collider_R.set_deferred("disabled", false)
+
 func swap_direction():
+	set_collider()
 	if direction == "left":
 		return "right"
 	else:
@@ -171,6 +188,7 @@ func walk(delta):
 			velocity.x = -speed
 		else:
 			velocity.x = -(speed / 2)
+			
 		$sprite.scale.x = -1
 	elif direction == "right":
 		moving = true
@@ -185,11 +203,26 @@ func walk(delta):
 	else:
 		$sprite.stop()
 	
-func push(delta, node):
-	pass
-	
-func grab(delta, node):
-	pass
+func grab():
+	if grabed_obj == null:
+		var areas = $grab_area.get_overlapping_bodies()
+		for area in areas:
+			if area.is_in_group("interactuable"):
+				grabed_obj = area
+				area.grabbed = true
+				get_parent().remove_child(area)
+				add_child(area)
+				area.position.x = 0
+				area.position.y = -30
+	else:
+		grabed_obj.grabbed = false
+		remove_child(grabed_obj)
+		get_parent().add_child(grabed_obj)
+		grabed_obj.global_position.x = global_position.x
+		grabed_obj.global_position.y = global_position.y - 30
+		
+		grabed_obj.droped(speed, direction)
+		grabed_obj = null
 	
 func shoot(delta, type):
 	pass

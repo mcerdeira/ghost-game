@@ -31,7 +31,7 @@ func set_possesed(_obj):
 	Global.BlackEffect.visible = true
 	possed_char = _obj
 	possed_char.z_index = 10
-	possed_char.modulate = Color(2.0, 2.0, 2.0, 1.0)
+	possed_char.modulate = Color(3.0, 3.0, 3.0, 1.0)
 	dest = _obj.global_position
 	possesing = true
 	speed = posses_speed

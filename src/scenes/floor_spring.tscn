@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv5itr88umctj"]
+[gd_scene load_steps=6 format=3 uid="uid://dv5itr88umctj"]
 
 [ext_resource type="Script" path="res://scenes/floor_spring.gd" id="1_b0oal"]
 [ext_resource type="Texture2D" uid="uid://bdu3i1g0icrag" path="res://sprites/floor_spr_spring.png" id="2_2wf14"]
@@ -17,7 +17,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="floor_spring" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc548"]
+size = Vector2(30, 31)
+
+[node name="floor_spring" type="CharacterBody2D"]
 script = ExtResource("1_b0oal")
 
 [node name="char_detect" type="Area2D" parent="."]
@@ -35,5 +38,9 @@ sprite_frames = SubResource("SpriteFrames_7rqct")
 
 [node name="down" type="Marker2D" parent="."]
 position = Vector2(0, 32)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32.5)
+shape = SubResource("RectangleShape2D_yc548")
 
 [connection signal="body_entered" from="char_detect" to="." method="_on_char_detect_body_entered"]
