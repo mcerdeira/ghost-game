@@ -41,7 +41,10 @@ func play( path_or_audiostream, crossfade_duration := 1.0 ):
 ## Pausa la reproducción del stream actual
 func pause() -> void :
 	_current_track.stream_paused = true
-
+	
+	
+func resume() -> void:
+	_current_track.stream_paused = false
 
 ## Detiene la reproducción del stream actual
 func stop(fade_duration := 1.0) -> void:

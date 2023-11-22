@@ -16,6 +16,7 @@ var POSSESSIONS = []
 var LEVEL = 0
 var POSSES_SFX = null
 
+var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var TUTORIALS = [
