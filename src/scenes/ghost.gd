@@ -12,6 +12,7 @@ var possed_char = null
 func _ready():
 	Global.GHOST = self
 	$sprite.play()
+	$sprite2.play()
 	
 func set_dest(_dest):
 	if Global.IN_OTHER:
@@ -44,6 +45,7 @@ func custom_look_at(target):
 		$sprite.scale.x = 1
 
 func _process(delta):
+	$sprite2.scale.x = $sprite.scale.x
 	if !Global.IN_OTHER:
 		if !possesing:
 			if Input.is_action_just_pressed("click"):
