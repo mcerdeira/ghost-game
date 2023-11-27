@@ -1,20 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpkwgc1i65l1m"]
+[gd_scene load_steps=18 format=3 uid="uid://ddwyw4x66ajfk"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_pr4dy"]
-[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_pikgu"]
-[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_a0fsj"]
-[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_ys3vb"]
-[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="5_fdab6"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_nu8km"]
-[ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="7_iwepi"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_w5wds"]
+[ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="2_ibhq1"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="3_sphbk"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="4_eh521"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="5_7dkgn"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="6_2yg8i"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_f7epk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0eiud"]
-shader = ExtResource("7_iwepi")
+shader = ExtResource("2_ibhq1")
 shader_parameter/apply = true
 shader_parameter/amount = 0.1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
-texture = ExtResource("3_a0fsj")
+texture = ExtResource("4_eh521")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -22,7 +22,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
-texture = ExtResource("4_ys3vb")
+texture = ExtResource("5_7dkgn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -68,8 +68,30 @@ _data = {
 "new_animation": SubResource("Animation_ybq0l")
 }
 
-[node name="Level11" type="Node2D"]
-script = ExtResource("1_pr4dy")
+[sub_resource type="Animation" id="Animation_ywr6w"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lbl_press_start:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3d3th"]
+_data = {
+"new_animation": SubResource("Animation_ywr6w")
+}
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_w5wds")
 
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
@@ -94,10 +116,10 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.811765)
 
 [node name="background" type="Sprite2D" parent="."]
-modulate = Color(0.9, 0.61, 0.23, 0.2)
+modulate = Color(0.938824, 0.0666666, 0.182745, 0.207843)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
-texture = ExtResource("2_pikgu")
+texture = ExtResource("3_sphbk")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -106,10 +128,21 @@ cell_quadrant_size = 32
 format = 2
 metadata/_edit_lock_ = true
 
-[node name="ghost" parent="." instance=ExtResource("5_fdab6")]
+[node name="ghost" parent="." instance=ExtResource("6_2yg8i")]
 process_mode = 3
 z_index = 10
-position = Vector2(307, 164)
+position = Vector2(575, 396)
+
+[node name="lbl_title" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 105.0
+offset_right = 1151.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("7_f7epk")
+theme_override_font_sizes/font_size = 146
+text = "PWNED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -120,17 +153,6 @@ position = Vector2(579.5, 325)
 shape = SubResource("RectangleShape2D_02l11")
 metadata/_edit_lock_ = true
 
-[node name="lbl_fruits" type="Label" parent="."]
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 1151.0
-offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("6_nu8km")
-theme_override_font_sizes/font_size = 24
-text = "FRUITS: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
 
@@ -138,6 +160,22 @@ environment = SubResource("Environment_oaqbm")
 speed_scale = 0.1
 libraries = {
 "": SubResource("AnimationLibrary_wclnq")
+}
+
+[node name="lbl_press_start" type="Label" parent="."]
+offset_top = 574.0
+offset_right = 1152.0
+offset_bottom = 600.0
+theme_override_fonts/font = ExtResource("7_f7epk")
+text = "PRESS START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+speed_scale = 2.3
+libraries = {
+"": SubResource("AnimationLibrary_3d3th")
 }
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

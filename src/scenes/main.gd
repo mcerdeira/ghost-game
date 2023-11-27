@@ -20,7 +20,7 @@ func _ready():
 	$BlackEffect.visible = false
 	Global.tutorial_lbl = $lbl_tutorial
 	
-func _physics_process(delta):
+func _physics_process(delta):	
 	if Input.is_action_just_pressed("WIN"):
 		Global.WIN = true
 	
@@ -35,17 +35,31 @@ func _physics_process(delta):
 		Global.FULLSCREEN = !Global.FULLSCREEN
 		if Global.FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			return
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			return
+			
 	
-	$lbl_fruits.text = "FRUITS: " + str(Global.FRUITS) + " / " + str(Global.TOTAL_FRUITS)
+	if Global.level_name == "Title":
+		if Input.is_action_just_pressed("start"):
+			Global.WIN = true
+	
+	if Global.level_name != "Title":
+		$lbl_fruits.text = "FRUITS: " + str(Global.FRUITS) + " / " + str(Global.TOTAL_FRUITS)
 	$background.rotation_degrees += (speed * -1) * delta
 	
 	if Global.WIN:
-		$Camera2D.zoom.x = lerp($Camera2D.zoom.x, 3.0, 0.01)
-		$Camera2D.zoom.y = $Camera2D.zoom.x
-		$Camera2D.position.x =  lerp($Camera2D.position.x, $portal.position.x, 0.01)
-		$Camera2D.position.y =  lerp($Camera2D.position.y, $portal.position.y, 0.01)
+		if Global.level_name == "Title":
+			$Camera2D.zoom.x = lerp($Camera2D.zoom.x, 9.0, 0.01)
+			$Camera2D.zoom.y = $Camera2D.zoom.x
+			$Camera2D.position.x =  lerp($Camera2D.position.x, $ghost.position.x, 0.01)
+			$Camera2D.position.y =  lerp($Camera2D.position.y, $ghost.position.y, 0.01)
+		else:
+			$Camera2D.zoom.x = lerp($Camera2D.zoom.x, 3.0, 0.01)
+			$Camera2D.zoom.y = $Camera2D.zoom.x
+			$Camera2D.position.x =  lerp($Camera2D.position.x, $portal.position.x, 0.01)
+			$Camera2D.position.y =  lerp($Camera2D.position.y, $portal.position.y, 0.01)
 		win_ttl -= 1 * delta
 		if win_ttl <= 0:
 			Global.LEVEL += 1

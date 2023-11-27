@@ -58,6 +58,7 @@ var CHARS_DATA = [{
 ]
 
 var LEVELS = [
+	"res://scenes/levels/Title.tscn",
 	"res://scenes/levels/level0.tscn",
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",

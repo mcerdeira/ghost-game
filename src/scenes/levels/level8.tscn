@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b31q5btvnq4r7"]
+[gd_scene load_steps=22 format=3 uid="uid://b31q5btvnq4r7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ifn7e"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="2_y7los"]
@@ -12,6 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://81xnnqebi3mp" path="res://scenes/box.tscn" id="10_tvne5"]
 [ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="11_i0s1g"]
 [ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="12_h8b7d"]
+[ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="13_54hnx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hebsu"]
+shader = ExtResource("13_54hnx")
+shader_parameter/apply = true
+shader_parameter/amount = 0.1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
 texture = ExtResource("4_blj4k")
@@ -70,6 +76,15 @@ _data = {
 
 [node name="Level8" type="Node2D"]
 script = ExtResource("1_ifn7e")
+
+[node name="FX" type="ColorRect" parent="."]
+z_index = 4096
+material = SubResource("ShaderMaterial_hebsu")
+offset_left = -57.0
+offset_top = -14.0
+offset_right = 1214.0
+offset_bottom = 681.0
+mouse_filter = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)

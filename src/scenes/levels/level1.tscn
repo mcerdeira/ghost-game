@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://c28twii3shdc2"]
+[gd_scene load_steps=21 format=3 uid="uid://c28twii3shdc2"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_0up3h"]
+[ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="2_dk57a"]
 [ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_vi4xr"]
 [ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="3_bvsrg"]
 [ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_lq7e1"]
@@ -11,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="9_kra8n"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_u7s8d"]
 [ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="11_w113f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kp0cc"]
+shader = ExtResource("2_dk57a")
+shader_parameter/apply = true
+shader_parameter/amount = 0.1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
 texture = ExtResource("3_bvsrg")
@@ -70,6 +76,15 @@ _data = {
 [node name="level1" type="Node2D"]
 script = ExtResource("1_0up3h")
 
+[node name="FX" type="ColorRect" parent="."]
+z_index = 4096
+material = SubResource("ShaderMaterial_kp0cc")
+offset_left = -57.0
+offset_top = -14.0
+offset_right = 1214.0
+offset_bottom = 681.0
+mouse_filter = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)
 
@@ -84,7 +99,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.811765)
 
 [node name="background" type="Sprite2D" parent="."]
-modulate = Color(0.9, 0.61, 0.23, 0.2)
+modulate = Color(1, 0, 0, 0.207843)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
 texture = ExtResource("2_vi4xr")
