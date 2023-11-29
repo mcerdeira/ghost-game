@@ -50,8 +50,8 @@ func _physics_process(delta):
 	
 	if emit_ttl > 0:
 		emit_ttl -= 1 * delta
-		if randi() % 4 == 0:
-			Global.emit(global_position, 7)
+		if randi() % 7 == 0:
+			Global.emit(global_position, 1)
 	
 	if is_absorved:
 		velocity.x = 0

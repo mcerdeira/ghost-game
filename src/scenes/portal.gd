@@ -17,7 +17,7 @@ func set_on():
 func _process(delta):	
 	$sprite.rotation_degrees += speed * delta
 	if !is_on and Global.WIN:
-		if randi() % 2 == 0:
+		if randi() % 5 == 0:
 			Global.emit(global_position, 1)
 
 func _on_body_entered(body):

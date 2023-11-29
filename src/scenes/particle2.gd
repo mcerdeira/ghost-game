@@ -1,6 +1,8 @@
 extends GPUParticles2D
-var clear_ttl = 2
+var clear_ttl = 1
 
+func _ready():
+	add_to_group("particles2")
 
 func _physics_process(delta):
 	if !emitting:

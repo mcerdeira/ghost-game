@@ -65,6 +65,7 @@ func _physics_process(delta):
 			Global.LEVEL += 1
 			var next_level = Global.LEVELS[Global.LEVEL]
 			Global.init()
+			Global.kill_particles()
 			get_tree().change_scene_to_file(next_level)
 
 func _on_area_2d_input_event(viewport, event, shape_idx):

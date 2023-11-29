@@ -104,6 +104,12 @@ func next_tutorial(action):
 	if Global.tutorial_index > Global.TUTORIALS.size() - 1:
 		Global.tutorial_index = Global.TUTORIALS.size() - 1
 
+func kill_particles():
+	var part = get_tree().get_nodes_in_group("particles2") 
+	for p in part:
+		p.visible = false
+		p.queue_free()
+
 func init():
 	GHOST = null
 	IN_OTHER = false
