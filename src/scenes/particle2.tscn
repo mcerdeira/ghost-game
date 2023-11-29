@@ -21,10 +21,14 @@ turbulence_noise_scale = 2.95
 
 [node name="particle2" type="GPUParticles2D"]
 process_mode = 3
+modulate = Color(2, 2, 2, 0.57)
 z_index = 4096
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_84u42")
 texture = ExtResource("1_chwwl")
-lifetime = 3.0
+lifetime = 0.4
+explosiveness = 1.0
+randomness = 1.0
 script = ExtResource("2_m2i80")
 
 [node name="Timer" type="Timer" parent="."]
