@@ -8,9 +8,11 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("interactuable") and body not in inside_me:
+		Global.emit(global_position, 1)
 		teleporter.inside_me.push_back(body)
 		body.teleport(teleporter.global_position)
 
 func _on_body_exited(body):
 	if body.is_in_group("interactuable") and body in inside_me:
+		Global.emit(global_position, 1)
 		inside_me.erase(body)

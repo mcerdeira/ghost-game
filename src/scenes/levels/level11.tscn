@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cd68ibghwps8v"]
+[gd_scene load_steps=22 format=3 uid="uid://cd68ibghwps8v"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_xcoqa"]
 [ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_xwfxr"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="9_ww587"]
 [ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="10_r3viy"]
 [ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="12_exa4t"]
+[ext_resource type="PackedScene" uid="uid://dv5itr88umctj" path="res://scenes/floor_spring.tscn" id="13_7sopk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vuxus"]
 shader = ExtResource("12_exa4t")
@@ -109,7 +110,7 @@ metadata/_edit_lock_ = true
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(524294, 5, 0, 524295, 5, 0, 524296, 5, 0, 524297, 5, 0, 524298, 5, 0, 524299, 5, 0, 524300, 5, 0, 524301, 5, 0, 524303, 5, 0, 524304, 5, 0, 524305, 5, 0, 524306, 5, 0, 524307, 5, 0, 524308, 5, 0, 524309, 5, 0, 524310, 5, 0, 524311, 5, 0, 524312, 5, 0, 524313, 5, 0, 524314, 5, 0, 524315, 5, 0, 458758, 5, 0, 458779, 5, 0, 851974, 0, 0, 851995, 0, 0, 917531, 0, 0, 917530, 0, 0, 917529, 0, 0, 917528, 0, 0, 917527, 0, 0, 917526, 0, 0, 917525, 0, 0, 917524, 0, 0, 917523, 0, 0, 917522, 0, 0, 917521, 0, 0, 917520, 0, 0, 917519, 0, 0, 917518, 0, 0, 917517, 0, 0, 917516, 0, 0, 917515, 0, 0, 917514, 0, 0, 917513, 0, 0, 917512, 0, 0, 917511, 0, 0, 917510, 0, 0, 589841, 0, 0, 655377, 0, 0, 720913, 0, 0, 786449, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0)
+layer_0/tile_data = PackedInt32Array(524294, 5, 0, 524296, 5, 0, 524297, 5, 0, 524298, 5, 0, 524299, 5, 0, 524300, 5, 0, 524301, 5, 0, 524303, 5, 0, 524304, 5, 0, 524305, 5, 0, 524308, 0, 0, 524309, 5, 0, 524310, 5, 0, 524311, 5, 0, 524312, 5, 0, 524313, 5, 0, 524314, 5, 0, 524315, 5, 0, 458758, 5, 0, 458779, 5, 0, 851974, 0, 0, 851995, 0, 0, 917531, 0, 0, 917530, 0, 0, 917529, 0, 0, 917528, 0, 0, 917527, 0, 0, 917526, 0, 0, 917525, 0, 0, 917524, 0, 0, 917523, 0, 0, 917522, 0, 0, 917521, 0, 0, 917520, 0, 0, 917519, 0, 0, 917518, 0, 0, 917517, 0, 0, 917516, 0, 0, 917515, 0, 0, 917514, 0, 0, 917513, 0, 0, 917512, 0, 0, 917510, 0, 0, 589841, 0, 0, 655377, 0, 0, 720913, 0, 0, 786449, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 851973, 0, 0, 851972, 0, 0, 524307, 0, 0, 524306, 0, 0, 458771, 0, 0, 393235, 0, 0, 327699, 0, 0, 262163, 0, 0, 196627, 0, 0, 131091, 0, 0, 917511, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="ghost" parent="." instance=ExtResource("5_381r4")]
@@ -147,11 +148,11 @@ libraries = {
 }
 
 [node name="character" parent="." instance=ExtResource("8_oh217")]
-position = Vector2(460, 432)
-type = 3
+position = Vector2(543, 240)
+type = 4
 
 [node name="fruit" parent="." instance=ExtResource("9_dj3d3")]
-position = Vector2(256, 384)
+position = Vector2(143, 398)
 
 [node name="character2" parent="." instance=ExtResource("8_oh217")]
 position = Vector2(368, 240)
@@ -169,5 +170,11 @@ position = Vector2(816, 176)
 
 [node name="portal" parent="." instance=ExtResource("7_ncmfa")]
 position = Vector2(816, 425)
+
+[node name="floor_spring" parent="." instance=ExtResource("13_7sopk")]
+position = Vector2(368, 432)
+
+[node name="fruit2" parent="." instance=ExtResource("9_dj3d3")]
+position = Vector2(208, 206)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

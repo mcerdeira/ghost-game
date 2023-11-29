@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bsuvl7wcbm6lb"]
+[gd_scene load_steps=24 format=3 uid="uid://bsuvl7wcbm6lb"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_pr4dy"]
 [ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="2_pikgu"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="12_cpr40"]
 [ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="13_pr473"]
 [ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="14_wb12m"]
+[ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="15_8d7xm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_md42k"]
 shader = ExtResource("14_wb12m")
@@ -149,7 +150,7 @@ libraries = {
 }
 
 [node name="box" parent="." instance=ExtResource("8_3torl")]
-position = Vector2(623, 336)
+position = Vector2(687, 336)
 
 [node name="fire_emiter" parent="box" instance=ExtResource("7_niffa")]
 position = Vector2(-0.999939, -40)
@@ -157,6 +158,10 @@ position = Vector2(-0.999939, -40)
 [node name="character" parent="." instance=ExtResource("9_1dj30")]
 position = Vector2(441, 336)
 type = 4
+
+[node name="character2" parent="." instance=ExtResource("9_1dj30")]
+position = Vector2(784, 176)
+type = 2
 
 [node name="fire_switch" parent="." instance=ExtResource("10_2twfn")]
 position = Vector2(784, 240)
@@ -171,5 +176,11 @@ position = Vector2(295, 332)
 
 [node name="fruit" parent="." instance=ExtResource("13_pr473")]
 position = Vector2(553, 338)
+
+[node name="switch" parent="." instance=ExtResource("15_8d7xm")]
+position = Vector2(687, 336)
+
+[node name="floor2" parent="." instance=ExtResource("9_l1wta")]
+position = Vector2(592, 336)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

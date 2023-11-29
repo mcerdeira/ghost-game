@@ -34,6 +34,29 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(320, 0), Vector2(320, 0), Vector2(0, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_emit"
+}, {
+"args": [],
+"method": &"_emit"
+}, {
+"args": [],
+"method": &"_emit"
+}, {
+"args": [],
+"method": &"_emit"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u335w"]
 _data = {

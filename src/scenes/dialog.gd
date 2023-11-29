@@ -10,6 +10,9 @@ func initialize(type):
 	$lbl_title.text = Global.CHARS_DATA[type].title
 	$lbl_description.text = Global.CHARS_DATA[type].description
 	
+func _physics_process(delta):
+	rotation = $Node2D.rotation
+	
 func _on_btn_pressed():
 	get_tree().paused = false
 	queue_free()

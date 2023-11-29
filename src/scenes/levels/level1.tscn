@@ -123,7 +123,7 @@ type = 2
 
 [node name="character2" parent="." instance=ExtResource("6_2l228")]
 position = Vector2(220, 432)
-type = 3
+type = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

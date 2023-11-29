@@ -10,6 +10,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if is_on and body.is_in_group("npc") or body.is_in_group("interactuable"):
+		Global.emit(global_position, 1)
 		bodies.push_back(body)
 		$sprite.frame = 1
 		is_on = false
@@ -20,6 +21,7 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if !is_on and body.is_in_group("npc") or body.is_in_group("interactuable"):
+		Global.emit(global_position, 1)
 		bodies.erase(body)
 		if bodies.size() <= 0:
 			$sprite.frame = 0

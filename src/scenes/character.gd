@@ -9,6 +9,9 @@ var is_absorved = false
 var first_time = true
 var push_force = 80.0
 var grabed_obj = null
+var total_friction = 0.3
+var friction = total_friction
+var emit_ttl = 0
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -23,6 +26,12 @@ func _ready():
 	
 func teleport(pos):
 	global_position = pos
+	
+func pushed(force, _direction):
+	if _direction == "left":
+		force = -force
+		
+	velocity.x = force
 
 func _physics_process(delta):
 	if Global.WIN:
@@ -37,7 +46,12 @@ func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y += gravity
 		
-	velocity.x = 0
+	velocity.x = lerp(velocity.x, 0.0, friction)
+	
+	if emit_ttl > 0:
+		emit_ttl -= 1 * delta
+		if randi() % 4 == 0:
+			Global.emit(global_position, 7)
 	
 	if is_absorved:
 		velocity.x = 0
@@ -60,6 +74,8 @@ func _physics_process(delta):
 func change_mode(_mode):
 	first_time = true
 	mode = _mode
+	if mode == "player":
+		emit_ttl = 0.2
 
 func process_npc(delta):
 	if type == Global.npc_types.WALKY or type == Global.npc_types.PUSHY: 
@@ -146,6 +162,7 @@ func do_action(delta):
 
 func jump(delta):
 	if is_on_floor():
+		Global.emit(global_position, 2)
 		velocity.y = jump_speed
 	
 func mega_jump():
@@ -236,6 +253,7 @@ func _on_mouse_rec_input_event(viewport, event, shape_idx):
 		if Global.level_name == "Level0":
 			Global.next_tutorial("right-click")
 		
+		Global.emit(global_position, 2)
 		mode = "player"
 		Global.play_sound(Global.POSSES_SFX)
 		Global.GHOST.set_possesed(self)

@@ -69,5 +69,6 @@ func _physics_process(delta):
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.double_click:
+		Global.emit(get_global_mouse_position(), 2)
 		Global.play_sound(Global.POSSES_SFX)
 		Global.GHOST.set_dest(get_global_mouse_position())

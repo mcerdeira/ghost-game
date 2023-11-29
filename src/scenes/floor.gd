@@ -15,8 +15,10 @@ func _physics_process(delta):
 		$collision.position = $sprite.position
 
 func open():
+	Global.emit(global_position, 1)
 	where = $down
 
 func close():
+	Global.emit(global_position, 1)
 	where = $up
 

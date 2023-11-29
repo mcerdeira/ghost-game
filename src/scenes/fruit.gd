@@ -9,12 +9,15 @@ func _ready():
 	Global.TOTAL_FRUITS += 1
 
 func _physics_process(delta):
-	rotate_ttl -= 1 * delta
-	if rotate_ttl <= 0:
-		rotate_ttl = rotate_ttl_total
-		rotate_dir *= -1
-	
-	$sprite.rotation_degrees += (speed * rotate_dir) * delta
+	if is_on:
+		rotate_ttl -= 1 * delta
+		if rotate_ttl <= 0:
+			rotate_ttl = rotate_ttl_total
+			rotate_dir *= -1
+		
+		$sprite.rotation_degrees += (speed * rotate_dir) * delta
+	else:
+		$sprite.rotation_degrees = 0
 
 func _on_body_entered(body):
 	if is_on and body.is_in_group("npc"):
@@ -25,4 +28,8 @@ func _on_body_entered(body):
 		if Global.FRUITS >= Global.TOTAL_FRUITS:
 			Global.PORTAL.set_on()
 			
-		visible = false
+		$AnimationPlayer.play("new_animation")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	queue_free()

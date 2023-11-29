@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b84tfmmwyohtu"]
+[gd_scene load_steps=32 format=3 uid="uid://b84tfmmwyohtu"]
 
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="1_2aywb"]
 [ext_resource type="Script" path="res://scenes/dialog.gd" id="1_b4hfa"]
@@ -154,22 +154,60 @@ _data = {
 "new_animation": SubResource("Animation_1qkg1")
 }
 
+[sub_resource type="Animation" id="Animation_mqg27"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0698132, 0.0698132, -0.0698132]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmski"]
+_data = {
+"new_animation": SubResource("Animation_mqg27")
+}
+
 [node name="dialog" type="Node2D"]
 process_mode = 3
+rotation = -0.0698132
 script = ExtResource("1_b4hfa")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+rotation = -0.0698132
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D"]
 offset_left = -231.0
 offset_top = -135.0
 offset_right = 248.0
 offset_bottom = 114.0
 color = Color(0.584314, 0, 0.584314, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
 offset_left = -240.0
 offset_top = -154.0
-offset_right = 239.0
-offset_bottom = 95.0
+offset_bottom = -24.0
+scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 
 [node name="character" type="AnimatedSprite2D" parent="."]
@@ -214,7 +252,7 @@ offset_left = -240.0
 offset_top = -144.0
 offset_right = 239.0
 offset_bottom = -124.0
-theme_override_colors/font_color = Color(0.879939, 0.652454, 0.78726, 1)
+theme_override_colors/font_color = Color(0.776471, 0.352941, 0.603922, 1)
 theme_override_fonts/font = ExtResource("1_2aywb")
 text = "NEW POSSESSION!!"
 horizontal_alignment = 1
@@ -224,6 +262,13 @@ vertical_alignment = 1
 speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_tn87w")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_gmski")
 }
 
 [connection signal="pressed" from="btn" to="." method="_on_btn_pressed"]

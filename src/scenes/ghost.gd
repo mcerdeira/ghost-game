@@ -24,11 +24,11 @@ func set_dest(_dest):
 		Global.IN_OTHER = false
 		dest = _dest
 		possed_char = null
+		Global.emit(dest, 2)
 		custom_look_at(dest)
 	
 func set_possesed(_obj):
 	set_dest(_obj.position)
-	
 	Global.BlackEffect.visible = true
 	possed_char = _obj
 	possed_char.z_index = 10
@@ -52,7 +52,9 @@ func _process(delta):
 				if Global.level_name == "Level0":
 					Global.next_tutorial("click")
 				
+				
 				dest = get_global_mouse_position()
+				Global.emit(dest, 2)
 				custom_look_at(dest)
 				
 		if possesing:

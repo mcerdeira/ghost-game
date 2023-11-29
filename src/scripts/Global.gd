@@ -15,6 +15,7 @@ var tutorial_lbl = null
 var POSSESSIONS = []
 var LEVEL = 0
 var POSSES_SFX = null
+var particle = preload("res://scenes/particle2.tscn")
 
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
@@ -22,7 +23,7 @@ var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var TUTORIALS = [
 	"[CLICK TO MOVE THE GHOST AROUND]",
 	"[RIGHT CLICK ON OTHERS TO POSSES]",
-	"[CONTROL THE POSSESSED BODY (WASD/SPACE)]",
+	"[CONTROL THE POSSESSED BODY\n(WASD: Move\nSPACE: Action)]",
 	"[GET ALL THE FRUITS TO UNLOCK THE PORTAL\nAND EXIT LEVEL THROUGH ACTIVED PORTAL]",
 ]
 
@@ -30,30 +31,30 @@ var CHARS_DATA = [{
 },
 {
 	"title": "JUMPY",
-	"description": "Jumps around like a rabbit.",
+	"description": "Action: Jumps around like a rabbit.",
 },
 {
 	"title": "SLEEPY",
-	"description": "Falls asleep and does nothing.",
+	"description": "Action: Falls asleep and does nothing.",
 },
 {
 	"title": "WALKY",
-	"description": "Walks from right to left and left to right.",
+	"description": "Action: Walks from right to left and left to right.",
 }
 ,
 {
 	"title": "PUSHY",
-	"description": "Can push some boxes and other things.",
+	"description": "Action: Can push some boxes and other things.",
 }
 ,
 {
 	"title": "GRABY",
-	"description": "Can grab and throw stuff.",
+	"description": "Action: Can grab and throw stuff.",
 }
 ,
 {
 	"title": "FLAMY",
-	"description": "Spits fire like a dragon.",
+	"description": "Action: Spits fire like a dragon.",
 }
 ]
 
@@ -80,6 +81,12 @@ var LEVELS = [
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	POSSES_SFX = preload("res://sfx/172206__fins__teleport.wav")
+	
+func emit(_global_position, count):
+	for i in range(count):
+		var p = particle.instantiate()
+		add_child(p)
+		p.global_position = _global_position
 
 func next_tutorial(action):
 	if action == "click" and (Global.tutorial_index == 1 or Global.tutorial_index == 0):

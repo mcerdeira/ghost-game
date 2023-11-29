@@ -145,7 +145,7 @@ environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_7jms6")]
 position = Vector2(458, 368)
-type = 3
+type = 2
 
 [node name="fruit" parent="." instance=ExtResource("9_bgmug")]
 position = Vector2(711, 368)
