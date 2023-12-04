@@ -17,7 +17,7 @@ func set_on():
 func _process(delta):	
 	$sprite.rotation_degrees += speed * delta
 	if !is_on and Global.WIN:
-		if randi() % 5 == 0:
+		if randi() % 50 == 0:
 			Global.emit(global_position, 1)
 
 func _on_body_entered(body):
@@ -25,6 +25,8 @@ func _on_body_entered(body):
 		is_on = false
 		speed = 500
 		Global.WIN = true
+		$rays.rotation_degrees = randi() % 360
+		$rays.visible = true
 		$lbl_win.visible = true
 		$AnimationPlayer2.play("new_animation")
 		body.global_position = global_position

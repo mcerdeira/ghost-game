@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://brgkl6voaoltp"]
+[gd_scene load_steps=12 format=3 uid="uid://brgkl6voaoltp"]
 
 [ext_resource type="Texture2D" uid="uid://ckl6rfp7670gl" path="res://sprites/portal.png" id="1_3jkcv"]
 [ext_resource type="Script" path="res://scenes/portal.gd" id="1_g8ymj"]
 [ext_resource type="Texture2D" uid="uid://bo75jwx341tbv" path="res://sprites/portal1.png" id="2_h5myw"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="4_xuvs8"]
+[ext_resource type="PackedScene" uid="uid://d1wtc4x0q3p11" path="res://scenes/ray_sprite.tscn" id="5_g521a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wevx4"]
 animations = [{
@@ -100,5 +101,32 @@ speed_scale = 2.3
 libraries = {
 "": SubResource("AnimationLibrary_1mvjj")
 }
+
+[node name="rays" type="Node2D" parent="."]
+visible = false
+
+[node name="ray_sprite" parent="rays" instance=ExtResource("5_g521a")]
+rotation = 0.987856
+
+[node name="ray_sprite2" parent="rays" instance=ExtResource("5_g521a")]
+rotation = -0.354302
+
+[node name="ray_sprite3" parent="rays" instance=ExtResource("5_g521a")]
+rotation = 0.0698132
+
+[node name="ray_sprite4" parent="rays" instance=ExtResource("5_g521a")]
+rotation = -2.47139
+
+[node name="ray_sprite5" parent="rays" instance=ExtResource("5_g521a")]
+rotation = 2.96531
+
+[node name="ray_sprite6" parent="rays" instance=ExtResource("5_g521a")]
+rotation = 2.33001
+
+[node name="ray_sprite7" parent="rays" instance=ExtResource("5_g521a")]
+rotation = -1.62316
+
+[node name="ray_sprite8" parent="rays" instance=ExtResource("5_g521a")]
+rotation = 1.55334
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
