@@ -35,6 +35,7 @@ animations = [{
 }]
 
 [node name="ray_sprite" type="AnimatedSprite2D"]
+self_modulate = Color(1.5, 1.5, 1.5, 1)
 sprite_frames = SubResource("SpriteFrames_a20f7")
 autoplay = "default"
 frame_progress = 0.947422
