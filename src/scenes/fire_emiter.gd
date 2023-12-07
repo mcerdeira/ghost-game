@@ -1,6 +1,4 @@
 extends Node2D
-var fire_part_obj = preload("res://scenes/fire_part.tscn")
-var total_part = 106
 var inside_me = []
 var created = false
 
@@ -8,26 +6,19 @@ func _ready():
 	create()
 		
 func create():
-	for i in range(total_part):
-		var f = fire_part_obj.instantiate()
-		add_child(f)
-	
 	created = true
+	$Line2D.points[1].y = 0
 	
 func destroy():
-	var fires = get_children()
-	for f in fires:
-		if f.is_in_group("fire_particle"):
-			f.queue_free()
-			
 	created = false
 		
 func _physics_process(delta):
-	if inside_me.size() == 0 and !created:
-		create()
-	elif inside_me.size() > 0 and created:
-		destroy()
-
+	$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), 0.5)
+	var coso = abs($Line2D.points[1].y)
+	$RaySprite.scale.x = abs($Line2D.points[1].y - 2)
+	$fire_part.position = $Line2D.points[1]
+	$RayParticles2.position = $Line2D.points[1]
+	
 func _on_inhiber_body_entered(body):
 	if body.is_in_group("interactuable") and body not in inside_me:
 		inside_me.push_back(body)

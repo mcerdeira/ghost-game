@@ -153,7 +153,7 @@ libraries = {
 position = Vector2(687, 336)
 
 [node name="fire_emiter" parent="box" instance=ExtResource("7_niffa")]
-position = Vector2(-0.999939, -40)
+position = Vector2(-0.999939, -51)
 
 [node name="character" parent="." instance=ExtResource("9_1dj30")]
 position = Vector2(441, 336)

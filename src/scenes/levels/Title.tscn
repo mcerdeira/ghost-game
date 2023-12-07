@@ -39,13 +39,6 @@ sources/0 = SubResource("TileSetAtlasSource_t7atg")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02l11"]
 size = Vector2(1179, 670)
 
-[sub_resource type="Environment" id="Environment_oaqbm"]
-background_mode = 3
-ambient_light_source = 2
-glow_enabled = true
-glow_blend_mode = 1
-glow_hdr_threshold = 0.1
-
 [sub_resource type="Animation" id="Animation_ybq0l"]
 resource_name = "new_animation"
 length = 3.0
@@ -89,6 +82,13 @@ tracks/0/keys = {
 _data = {
 "new_animation": SubResource("Animation_ywr6w")
 }
+
+[sub_resource type="Environment" id="Environment_oaqbm"]
+background_mode = 3
+ambient_light_source = 2
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.1
 
 [node name="Title" type="Node2D"]
 script = ExtResource("1_w5wds")
@@ -153,9 +153,6 @@ position = Vector2(579.5, 325)
 shape = SubResource("RectangleShape2D_02l11")
 metadata/_edit_lock_ = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_oaqbm")
-
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
 libraries = {
@@ -177,5 +174,8 @@ speed_scale = 2.3
 libraries = {
 "": SubResource("AnimationLibrary_3d3th")
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oaqbm")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

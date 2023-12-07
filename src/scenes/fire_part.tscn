@@ -1,31 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfb077sbe44pc"]
+[gd_scene load_steps=3 format=3 uid="uid://cfb077sbe44pc"]
 
 [ext_resource type="Script" path="res://scenes/fire_part.gd" id="1_wu5as"]
-[ext_resource type="Texture2D" uid="uid://bn8ymuscfa0lq" path="res://sprites/fire_fx.png" id="2_q6xca"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bvkgq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_q6xca")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1ftjx"]
-radius = 18.868
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6swi"]
+size = Vector2(10, 10)
 
 [node name="fire_part" type="Area2D"]
 script = ExtResource("1_wu5as")
 
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.556863, 0.556863, 0.556863, 1)
-sprite_frames = SubResource("SpriteFrames_bvkgq")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -5)
-shape = SubResource("CircleShape2D_1ftjx")
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_x6swi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

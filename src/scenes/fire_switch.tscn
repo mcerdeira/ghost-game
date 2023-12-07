@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4573d"]
-size = Vector2(11, 16)
+size = Vector2(22, 13)
 
 [node name="fire_switch" type="Area2D"]
 script = ExtResource("1_njvf1")
@@ -28,5 +28,5 @@ script = ExtResource("1_njvf1")
 sprite_frames = SubResource("SpriteFrames_86l3i")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 8)
+position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_4573d")
