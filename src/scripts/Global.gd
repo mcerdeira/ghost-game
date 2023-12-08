@@ -23,7 +23,7 @@ var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var TUTORIALS = [
 	"[CLICK TO MOVE THE GHOST AROUND]",
 	"[RIGHT CLICK ON OTHERS TO POSSES]",
-	"[CONTROL THE POSSESSED BODY\n(WASD: Move\nSPACE: Action)]",
+	"[CONTROL THE POSSESSED BODY:\n'WASD': Move\n'SPACE': Action\n'R': Restart]",
 	"[GET ALL THE FRUITS TO UNLOCK THE PORTAL\nAND EXIT LEVEL THROUGH ACTIVED PORTAL]",
 ]
 
@@ -112,6 +112,7 @@ func kill_particles():
 		p.queue_free()
 
 func init():
+	tutorial_index = 0
 	GHOST = null
 	IN_OTHER = false
 	BlackEffect = null

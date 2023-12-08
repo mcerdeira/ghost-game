@@ -1,8 +1,9 @@
 extends Node2D
 var focus_on = false
+var normal_a = 0.2
 
 func _ready():
-	modulate.a = 0.1
+	modulate.a = normal_a
 	if !Global.MUSIC_ENABLED:
 		$sprite.frame = 1
 	else:
@@ -12,7 +13,7 @@ func _physics_process(delta):
 	if focus_on:
 		modulate.a = lerp(modulate.a, 1.0, 0.1)
 	else:
-		modulate.a = lerp(modulate.a, 0.1, 0.1)
+		modulate.a = lerp(modulate.a, normal_a, 0.1)
 
 func _on_btn_pressed():
 	Global.MUSIC_ENABLED = !Global.MUSIC_ENABLED
