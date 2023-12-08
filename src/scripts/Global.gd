@@ -76,6 +76,7 @@ var LEVELS = [
 	"res://scenes/levels/level13.tscn",
 	"res://scenes/levels/level14.tscn",
 	"res://scenes/levels/level15.tscn",
+	"res://scenes/levels/level16.tscn",
 ]
 
 func _ready():
