@@ -68,7 +68,8 @@ func _physics_process(delta):
 		for i in get_slide_collision_count():
 			var c = get_slide_collision(i)
 			var col = c.get_collider() 
-			if col.is_in_group("interactuable"):
+			var normal = c.get_normal()
+			if col.is_in_group("interactuable") and normal.y == 0:
 				col.pushed(speed, direction)
 	
 func change_mode(_mode):
