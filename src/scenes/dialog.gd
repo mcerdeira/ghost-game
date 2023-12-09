@@ -12,8 +12,13 @@ func initialize(type):
 	
 func _physics_process(delta):
 	rotation = $Node2D.rotation
+	if Input.is_action_just_pressed("start"):
+		btn_pressed()
 	
 func _on_btn_pressed():
+	btn_pressed()
+
+func btn_pressed():
 	get_tree().paused = false
 	queue_free()
 	visible = false

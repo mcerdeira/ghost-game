@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csapxdj6ih6tv"]
+[gd_scene load_steps=19 format=3 uid="uid://csapxdj6ih6tv"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uwusa"]
 [ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="2_3lhew"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_lbo7v"]
 [ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_05x4b"]
 [ext_resource type="PackedScene" uid="uid://81xnnqebi3mp" path="res://scenes/box.tscn" id="9_4b5wc"]
+[ext_resource type="PackedScene" uid="uid://b4lwufhu6l7tk" path="res://scenes/fire_emiter.tscn" id="10_604e0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0eiud"]
 shader = ExtResource("2_3lhew")
@@ -106,7 +107,7 @@ metadata/_edit_lock_ = true
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0)
+layer_0/tile_data = PackedInt32Array(524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 720912, 0, 0, 720911, 0, 0, 720910, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="ghost" parent="." instance=ExtResource("6_0pcvc")]
@@ -149,5 +150,8 @@ type = 4
 
 [node name="box" parent="." instance=ExtResource("9_4b5wc")]
 position = Vector2(526, 233)
+
+[node name="fire_emiter" parent="." instance=ExtResource("10_604e0")]
+position = Vector2(559, 317)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

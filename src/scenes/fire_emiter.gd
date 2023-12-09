@@ -13,7 +13,14 @@ func destroy():
 	created = false
 		
 func _physics_process(delta):
-	$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), 0.5)
+	if inside_me.size() > 0 and created:
+		$Line2D.points[1].y = 0
+		$RaySprite.visible = false
+	else:
+		$RaySprite.visible = true
+		$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), 0.7)
+	
+	
 	var coso = abs($Line2D.points[1].y)
 	$RaySprite.scale.x = abs($Line2D.points[1].y - 2)
 	$fire_part.position = $Line2D.points[1]

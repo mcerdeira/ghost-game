@@ -155,7 +155,7 @@ libraries = {
 position = Vector2(395, 338)
 
 [node name="fire_emiter" parent="box" instance=ExtResource("8_yl2ng")]
-position = Vector2(-0.999939, -40)
+position = Vector2(-0.999939, -51)
 
 [node name="character" parent="." instance=ExtResource("9_olq0h")]
 position = Vector2(305, 336)
@@ -176,7 +176,7 @@ _teleporter = NodePath("../teleporter")
 position = Vector2(751, 158)
 
 [node name="fire_switch" parent="." instance=ExtResource("13_ajrt6")]
-position = Vector2(980, 313)
+position = Vector2(976, 304)
 rotation = 3.14159
 
 [node name="portal" parent="." instance=ExtResource("14_ka12c")]
