@@ -188,7 +188,7 @@ _data = {
 size = Vector2(20, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvj60"]
-size = Vector2(24, 6)
+size = Vector2(28, 6)
 
 [node name="character" type="CharacterBody2D"]
 platform_on_leave = 2

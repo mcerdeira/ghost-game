@@ -166,7 +166,7 @@ position = Vector2(304, 240)
 position = Vector2(94, 336)
 
 [node name="fire_emiter" parent="box2" instance=ExtResource("11_4q4lv")]
-position = Vector2(-1, -40)
+position = Vector2(-1, -51)
 
 [node name="fire_switch" parent="." instance=ExtResource("12_5hfcq")]
 position = Vector2(94, 191)
@@ -178,9 +178,6 @@ position = Vector2(239, 240)
 [node name="character2" parent="." instance=ExtResource("7_p1vf5")]
 position = Vector2(463, 496)
 type = 2
-
-[node name="fruit" parent="." instance=ExtResource("13_p5qhk")]
-position = Vector2(463, 454)
 
 [node name="fruit2" parent="." instance=ExtResource("13_p5qhk")]
 position = Vector2(604, 495)

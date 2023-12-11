@@ -15,6 +15,7 @@ var tutorial_lbl = null
 var POSSESSIONS = []
 var LEVEL = 0
 var JUMP_SFX = null
+var TELEPORT_SFX = null
 var LASER_SFX = null
 var SWITCH_SFX = null
 var SPRING_SFX = null
@@ -122,8 +123,9 @@ func load_sfx():
 	PORTAL_SFX = preload("res://sfx/portal.mp3")
 	SPRING_SFX = preload("res://sfx/spring.mp3")
 	JUMP_SFX = preload("res://sfx/jump.wav")
-	SWITCH_SFX = preload("res://sfx/click9.wav")
+	SWITCH_SFX = preload("res://sfx/click9.mp3")
 	LASER_SFX = preload("res://sfx/saw.wav")
+	TELEPORT_SFX = preload("res://sfx/teleportation sound effect.mp3")
 	
 func emit(_global_position, count):
 	for i in range(count):
