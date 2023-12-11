@@ -103,7 +103,7 @@ func process_player(delta):
 	if !Global.WIN:
 		var moving = false
 		if Input.is_action_just_pressed("jump"):
-			if type != Global.npc_types.WALKY:
+			if type != Global.npc_types.WALKY and type != Global.npc_types.PUSHY:
 				do_action(delta)
 			
 		if Input.is_action_pressed("left"):
@@ -163,11 +163,17 @@ func do_action(delta):
 
 func jump(delta):
 	if is_on_floor():
+		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed
 	
 func mega_jump():
+	Global.play_sound(Global.SPRING_SFX)
 	velocity.y = jump_speed * 2
+	
+func little_jump():
+	Global.play_sound(Global.JUMP_SFX)
+	velocity.y = jump_speed / 2
 	
 func sleep(delta):
 	$sprite.stop()
@@ -245,9 +251,6 @@ func grab():
 	
 func shoot(delta, type):
 	pass
-	
-func little_jump():
-	velocity.y = jump_speed / 2
 	
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
 	if mode == "npc" and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:

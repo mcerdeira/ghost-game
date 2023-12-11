@@ -32,9 +32,11 @@ func _physics_process(delta):
 		velocity.y = 0
 	
 func mega_jump():
+	Global.play_sound(Global.SPRING_SFX)
 	velocity.y = jump_speed * 2
 	
 func little_jump():
+	Global.play_sound(Global.JUMP_SFX)
 	velocity.y = jump_speed / 2
 	
 func droped(speed, direction):

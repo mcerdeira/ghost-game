@@ -24,6 +24,7 @@ func _on_body_entered(body):
 	if is_on and body.is_in_group("npc"):
 		is_on = false
 		speed = 500
+		Global.play_sound(Global.PORTAL_SFX)
 		Global.WIN = true
 		$rays.rotation_degrees = randi() % 360
 		$rays.visible = true

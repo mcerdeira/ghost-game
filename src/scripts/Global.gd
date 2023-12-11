@@ -14,7 +14,13 @@ var tutorial_index = 0
 var tutorial_lbl = null
 var POSSESSIONS = []
 var LEVEL = 0
+var JUMP_SFX = null
+var LASER_SFX = null
+var SWITCH_SFX = null
+var SPRING_SFX = null
 var POSSES_SFX = null
+var BITE_SFX = null
+var PORTAL_SFX = null
 var particle = preload("res://scenes/particle2.tscn")
 var SAVED_GAME = false
 
@@ -85,6 +91,10 @@ func save_game():
 	saved_game.store_var(Global.LEVEL)
 	saved_game.close()
 	
+	var saved_poss = FileAccess.open("user://savepos.save", FileAccess.WRITE)
+	saved_poss.store_var(Global.POSSESSIONS)
+	saved_poss.close()
+	
 func load_game():
 	var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
 	if saved_game:
@@ -93,11 +103,27 @@ func load_game():
 			SAVED_GAME = true
 			Global.LEVEL = level
 			saved_game.close()
+			
+	var saved_poss = FileAccess.open("user://savepos.save", FileAccess.READ)
+	if saved_poss:
+		var pos = saved_poss.get_var()
+		if pos:
+			Global.POSSESSIONS = pos
+			saved_poss.close()
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	POSSES_SFX = preload("res://sfx/172206__fins__teleport.wav")
+	load_sfx()
 	load_game()
+	
+func load_sfx():
+	POSSES_SFX = preload("res://sfx/172206__fins__teleport.wav")
+	BITE_SFX = preload("res://sfx/Deep Gulp Sound Effect.mp3")
+	PORTAL_SFX = preload("res://sfx/portal.mp3")
+	SPRING_SFX = preload("res://sfx/spring.mp3")
+	JUMP_SFX = preload("res://sfx/jump.wav")
+	SWITCH_SFX = preload("res://sfx/click9.wav")
+	LASER_SFX = preload("res://sfx/saw.wav")
 	
 func emit(_global_position, count):
 	for i in range(count):

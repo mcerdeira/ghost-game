@@ -49,15 +49,18 @@ func _physics_process(delta):
 
 func _on_char_detect_body_entered(body):
 	if !is_on and body != self and (body.is_in_group("npc") or body.is_in_group("interactuable")):
+		Global.play_sound(Global.SPRING_SFX)
 		Global.emit(global_position, 1)
 		char = body
 		goup_ttl = 0.09
 		is_on = true
 
 func mega_jump():
+	Global.play_sound(Global.JUMP_SFX)
 	velocity.y = jump_speed * 2
 	
 func little_jump():
+	Global.play_sound(Global.JUMP_SFX)
 	velocity.y = jump_speed / 2
 	
 func droped(speed, direction):
