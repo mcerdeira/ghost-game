@@ -62,7 +62,13 @@ func _physics_process(delta):
 			$Camera2D.position.y =  lerp($Camera2D.position.y, $portal.position.y, 0.01)
 		win_ttl -= 1 * delta
 		if win_ttl <= 0:
-			Global.LEVEL += 1
+			if Global.level_name != "Title":
+				Global.LEVEL += 1
+				Global.save_game()
+			else:
+				if !Global.SAVED_GAME:
+					Global.LEVEL = 1
+				
 			var next_level = Global.LEVELS[Global.LEVEL]
 			Global.init()
 			Global.kill_particles()

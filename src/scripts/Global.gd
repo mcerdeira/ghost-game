@@ -16,6 +16,7 @@ var POSSESSIONS = []
 var LEVEL = 0
 var POSSES_SFX = null
 var particle = preload("res://scenes/particle2.tscn")
+var SAVED_GAME = false
 
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
@@ -79,9 +80,24 @@ var LEVELS = [
 	"res://scenes/levels/level16.tscn",
 ]
 
+func save_game():
+	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	saved_game.store_var(Global.LEVEL)
+	saved_game.close()
+	
+func load_game():
+	var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	if saved_game:
+		var level = saved_game.get_var()
+		if level:
+			SAVED_GAME = true
+			Global.LEVEL = level
+			saved_game.close()
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	POSSES_SFX = preload("res://sfx/172206__fins__teleport.wav")
+	load_game()
 	
 func emit(_global_position, count):
 	for i in range(count):
