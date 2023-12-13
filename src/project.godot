@@ -29,6 +29,7 @@ Music="*res://scripts/Music.gd"
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://sprites/cursor_spr_0.png"
 
 [importer_defaults]
 
