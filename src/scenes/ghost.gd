@@ -13,7 +13,7 @@ func _ready():
 	Global.GHOST = self
 	$sprite.play()
 	$sprite2.play()
-	
+		
 func set_dest(_dest):
 	if Global.IN_OTHER:
 		global_position = possed_char.global_position

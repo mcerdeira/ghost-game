@@ -1,6 +1,6 @@
 extends Node
 enum npc_states {IDLE, ANGRY, INLOVE, INLOVE_CHASE}
-enum npc_types {NONE, JUMPY, SLEEPY, WALKY, PUSHY, GRABY, FLAMY}
+enum npc_types {NONE, JUMPY, SLEEPY, WALKY, PUSHY, GRABY, FLAMY, FAKE}
 var GHOST = null
 var IN_OTHER = false
 var BlackEffect = null
@@ -21,9 +21,13 @@ var SWITCH_SFX = null
 var SPRING_SFX = null
 var POSSES_SFX = null
 var BITE_SFX = null
+var BOBM_SFX = null
 var PORTAL_SFX = null
 var particle = preload("res://scenes/particle2.tscn")
 var SAVED_GAME = false
+var PLAY_INTRO = true
+var shaker_obj = null
+var DIALOG_OBJ = null
 
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
@@ -98,6 +102,7 @@ func save_game():
 	
 func load_game():
 	var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	PLAY_INTRO = !saved_game
 	if saved_game:
 		var level = saved_game.get_var()
 		if level:
@@ -126,6 +131,7 @@ func load_sfx():
 	SWITCH_SFX = preload("res://sfx/click9.mp3")
 	LASER_SFX = preload("res://sfx/saw.wav")
 	TELEPORT_SFX = preload("res://sfx/teleportation sound effect.mp3")
+	BOBM_SFX = preload("res://sfx/BombExplosionSfx.wav")
 	
 func emit(_global_position, count):
 	for i in range(count):

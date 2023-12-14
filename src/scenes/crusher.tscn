@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://vbvj4gkeumgk"]
+
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="1_hcuf3"]
+[ext_resource type="Texture2D" uid="uid://dwtp4w6anxa6g" path="res://sprites/altar_floor.png" id="2_x05bw"]
+[ext_resource type="Texture2D" uid="uid://cvlfbux0mfolj" path="res://sprites/altar_floor_blood.png" id="3_83vwg"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="4_5lp4s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
+texture = ExtResource("1_hcuf3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20qmo"]
+texture = ExtResource("2_x05bw")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50ij8"]
+texture = ExtResource("3_83vwg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
+texture = ExtResource("4_5lp4s")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_it710"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+sources/5 = SubResource("TileSetAtlasSource_rudm8")
+sources/0 = SubResource("TileSetAtlasSource_t7atg")
+sources/1 = SubResource("TileSetAtlasSource_20qmo")
+sources/2 = SubResource("TileSetAtlasSource_50ij8")
+
+[node name="Crusher" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_it710")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(851988, 2, 0, 851989, 2, 0, 851990, 2, 0, 851991, 2, 0, 851992, 2, 0, 851993, 2, 0, 851994, 2, 0, 851995, 2, 0, 851996, 2, 0, 851997, 2, 0, 851998, 2, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 983062, 1, 0, 1048598, 1, 0, 1114134, 1, 0, 1179670, 1, 0, 1179671, 1, 0, 1245206, 1, 0, 1310742, 1, 0, 1376278, 1, 0, 1441814, 1, 0, 1507350, 1, 0, 1572886, 1, 0, 1638422, 1, 0, 1703958, 1, 0, 1769494, 1, 0, 1835030, 1, 0, 1835031, 1, 0, 1835032, 1, 0, 1835033, 1, 0, 1835034, 1, 0, 983068, 1, 0, 1048604, 1, 0, 1114140, 1, 0, 1179676, 1, 0, 1245212, 1, 0, 1310748, 1, 0, 1376284, 1, 0, 1441820, 1, 0, 1507356, 1, 0, 1507355, 1, 0, 1572891, 1, 0, 1638427, 1, 0, 1703963, 1, 0, 1769499, 1, 0, 1835035, 1, 0, 1835036, 1, 0, 1769500, 1, 0, 1703964, 1, 0, 1638428, 1, 0, 1572892, 1, 0, 1769498, 1, 0, 1769497, 1, 0, 1769496, 1, 0, 1769495, 1, 0, 1703959, 1, 0, 1638423, 1, 0, 1572887, 1, 0, 1507351, 1, 0, 1441816, 1, 0, 1376280, 1, 0, 1507352, 1, 0, 1572888, 1, 0, 1638424, 1, 0, 1703960, 1, 0, 1703961, 1, 0, 1638426, 1, 0, 1572890, 1, 0, 1507354, 1, 0, 1507353, 1, 0, 1572889, 1, 0, 1638425, 1, 0, 1703962, 1, 0, 1441817, 1, 0, 1376281, 1, 0, 1310745, 1, 0, 1245209, 1, 0, 1179673, 1, 0, 1114137, 1, 0, 1114136, 1, 0, 1048600, 1, 0, 983064, 1, 0, 1048599, 1, 0, 1114135, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1441815, 1, 0, 1376279, 1, 0, 1310743, 1, 0, 1245207, 1, 0, 983063, 1, 0, 983065, 1, 0, 983066, 1, 0, 983067, 1, 0, 1048601, 1, 0, 1179672, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1114139, 1, 0, 1179675, 1, 0, 1179674, 1, 0, 1245210, 1, 0, 1310746, 1, 0, 1376282, 1, 0, 1376283, 1, 0, 1441819, 1, 0, 1114138, 1, 0, 1310747, 1, 0, 1245211, 1, 0, 1441818, 1, 0, 1900566, 1, 0, 1966102, 1, 0, 2031638, 1, 0, 2097174, 1, 0, 2162710, 1, 0, 2228246, 1, 0, 2293782, 1, 0, 2359318, 1, 0, 2424854, 1, 0, 2490390, 1, 0, 2555926, 1, 0, 2621463, 1, 0, 2621462, 1, 0, 2686998, 1, 0, 2752534, 1, 0, 2752535, 1, 0, 2752536, 1, 0, 2752537, 1, 0, 2752538, 1, 0, 2752539, 1, 0, 2752540, 1, 0, 1900572, 1, 0, 1966108, 1, 0, 2031644, 1, 0, 2097180, 1, 0, 2162716, 1, 0, 2228252, 1, 0, 2293788, 1, 0, 2359324, 1, 0, 2424860, 1, 0, 2490396, 1, 0, 2555932, 1, 0, 2621468, 1, 0, 2687004, 1, 0, 2687003, 1, 0, 2687002, 1, 0, 2687001, 1, 0, 2687000, 1, 0, 2686999, 1, 0, 2621467, 1, 0, 2621466, 1, 0, 2621465, 1, 0, 2621464, 1, 0, 2555927, 1, 0, 2555928, 1, 0, 2555929, 1, 0, 2555930, 1, 0, 2555931, 1, 0, 2490395, 1, 0, 2490394, 1, 0, 2424859, 1, 0, 2359323, 1, 0, 2293787, 1, 0, 2228251, 1, 0, 2162715, 1, 0, 2097179, 1, 0, 2031643, 1, 0, 1966107, 1, 0, 1900571, 1, 0, 1900570, 1, 0, 1900569, 1, 0, 1900568, 1, 0, 1900567, 1, 0, 1966103, 1, 0, 2031639, 1, 0, 2097175, 1, 0, 2162711, 1, 0, 2228247, 1, 0, 2293783, 1, 0, 2359319, 1, 0, 2424855, 1, 0, 2490391, 1, 0, 2490393, 1, 0, 2424857, 1, 0, 2424856, 1, 0, 2424858, 1, 0, 2490392, 1, 0, 2359322, 1, 0, 2359321, 1, 0, 2359320, 1, 0, 2293784, 1, 0, 2228248, 1, 0, 2162713, 1, 0, 2097177, 1, 0, 2031642, 1, 0, 1966106, 1, 0, 2097178, 1, 0, 2162714, 1, 0, 2228250, 1, 0, 2293786, 1, 0, 1966105, 1, 0, 1966104, 1, 0, 2031640, 1, 0, 2097176, 1, 0, 2162712, 1, 0, 2228249, 1, 0, 2031641, 1, 0, 2293785, 1, 0)
+metadata/_edit_lock_ = true

@@ -3,18 +3,18 @@
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
 [ext_resource type="Texture2D" uid="uid://d4lubcnokbtaf" path="res://sprites/jumpy_0.png" id="2_8vqtl"]
 [ext_resource type="Texture2D" uid="uid://sec8ksw5hkpi" path="res://sprites/graby_0.png" id="2_41xdb"]
-[ext_resource type="Texture2D" uid="uid://cdeu0fdnily4n" path="res://sprites/flamy_0.png" id="2_j2t2x"]
 [ext_resource type="Texture2D" uid="uid://dprmf3bjhgwha" path="res://sprites/sleepy_0.png" id="2_jnqlo"]
+[ext_resource type="Texture2D" uid="uid://qbsmkq743o8s" path="res://sprites/player_spr_0.png" id="2_m7ab1"]
 [ext_resource type="Texture2D" uid="uid://csqvm6kj8f3m" path="res://sprites/sleepy_1.png" id="3_a1okq"]
-[ext_resource type="Texture2D" uid="uid://bj0aj0es1feqs" path="res://sprites/flamy_1.png" id="3_nayw4"]
 [ext_resource type="Texture2D" uid="uid://bw2iwuvkcxtsv" path="res://sprites/graby_1.png" id="3_of2mm"]
+[ext_resource type="Texture2D" uid="uid://bxh2bj81xay6" path="res://sprites/player_spr_1.png" id="3_pmxjk"]
 [ext_resource type="Texture2D" uid="uid://dd5hxov1c3ogq" path="res://sprites/jumpy_1.png" id="3_qlp36"]
 [ext_resource type="Texture2D" uid="uid://brueeiohceh6k" path="res://sprites/jumpy_2.png" id="4_80peu"]
 [ext_resource type="Texture2D" uid="uid://bvgu012frlshs" path="res://sprites/sleepy_2.png" id="4_dbwgt"]
-[ext_resource type="Texture2D" uid="uid://wiltq3y020h5" path="res://sprites/flamy_2.png" id="4_eopy2"]
+[ext_resource type="Texture2D" uid="uid://bt525asidca4s" path="res://sprites/player_spr_2.png" id="4_ib6jf"]
 [ext_resource type="Texture2D" uid="uid://htwl2vwl4jkw" path="res://sprites/graby_2.png" id="4_jn1na"]
+[ext_resource type="Texture2D" uid="uid://ck5pswulngis0" path="res://sprites/player_spr_3.png" id="5_akikk"]
 [ext_resource type="Texture2D" uid="uid://p2bs652011kj" path="res://sprites/graby_3.png" id="5_j1fwb"]
-[ext_resource type="Texture2D" uid="uid://d286uiuy4674w" path="res://sprites/flamy_3.png" id="5_o450g"]
 [ext_resource type="Texture2D" uid="uid://do4wejummue7p" path="res://sprites/sleepy_3.png" id="5_qafjs"]
 [ext_resource type="Texture2D" uid="uid://dlcc3qm1pronh" path="res://sprites/jumpy_3.png" id="5_rahwa"]
 [ext_resource type="Texture2D" uid="uid://bvwah4xbherm6" path="res://sprites/sleep.png" id="6_nb65x"]
@@ -32,16 +32,16 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_j2t2x")
+"texture": ExtResource("2_m7ab1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_nayw4")
+"texture": ExtResource("3_pmxjk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_eopy2")
+"texture": ExtResource("4_ib6jf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_o450g")
+"texture": ExtResource("5_akikk")
 }],
 "loop": true,
 "name": &"flamy",

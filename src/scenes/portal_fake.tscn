@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwf0r1fxfhoyk"]
+
+[ext_resource type="Script" path="res://scenes/portal_fake.gd" id="1_jhfw4"]
+[ext_resource type="Texture2D" uid="uid://ckl6rfp7670gl" path="res://sprites/portal.png" id="2_oiu3r"]
+[ext_resource type="Texture2D" uid="uid://bo75jwx341tbv" path="res://sprites/portal1.png" id="3_63ss5"]
+[ext_resource type="PackedScene" uid="uid://d1wtc4x0q3p11" path="res://scenes/ray_sprite.tscn" id="5_jt11k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wevx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oiu3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_63ss5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f45im"]
+radius = 11.0454
+
+[sub_resource type="Animation" id="Animation_8jqap"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.3, 0.3), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsm62"]
+_data = {
+"new_animation": SubResource("Animation_8jqap")
+}
+
+[sub_resource type="Animation" id="Animation_6wo80"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1mvjj"]
+_data = {
+"new_animation": SubResource("Animation_6wo80")
+}
+
+[node name="portal" type="Area2D"]
+script = ExtResource("1_jhfw4")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 10, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wevx4")
+frame_progress = 0.301117
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f45im")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rsm62")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+speed_scale = 2.3
+libraries = {
+"": SubResource("AnimationLibrary_1mvjj")
+}
+
+[node name="rays" type="Node2D" parent="."]
+visible = false
+
+[node name="ray_sprite" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = 0.987856
+
+[node name="ray_sprite2" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = -0.354302
+
+[node name="ray_sprite3" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = 0.0698132
+
+[node name="ray_sprite4" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = -2.47139
+
+[node name="ray_sprite5" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = 2.96531
+
+[node name="ray_sprite6" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = 2.33001
+
+[node name="ray_sprite7" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = -1.62316
+
+[node name="ray_sprite8" parent="rays" instance=ExtResource("5_jt11k")]
+rotation = 1.55334
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

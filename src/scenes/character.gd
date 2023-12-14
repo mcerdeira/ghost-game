@@ -23,6 +23,12 @@ func _ready():
 	add_to_group("npc")
 	set_sprite()
 	set_collider()
+	if type == Global.npc_types.FAKE:
+		mode = "player"
+		Global.GHOST.possesing = false
+		Global.GHOST.visible = false
+		Global.GHOST.possed_char = self
+		Global.IN_OTHER = true
 	
 func teleport(pos):
 	global_position = pos
@@ -90,7 +96,8 @@ func process_npc(delta):
 		idle_timer -= 1 * delta
 		if idle_timer <= 0:
 			idle_timer = idle_timer_total
-			do_action(delta)
+			if type != Global.npc_types.FAKE:
+				do_action(delta)
 		
 	if state == Global.npc_states.INLOVE:
 		pass
@@ -150,7 +157,7 @@ func do_action(delta):
 	if !Global.WIN:
 		if type == Global.npc_types.FLAMY:
 			shoot(delta, "fire")
-		if type == Global.npc_types.JUMPY:
+		if type == Global.npc_types.JUMPY or type == Global.npc_types.FAKE:
 			jump(delta)
 		if type == Global.npc_types.GRABY:
 			grab()
@@ -253,12 +260,13 @@ func shoot(delta, type):
 	pass
 	
 func _on_mouse_rec_input_event(viewport, event, shape_idx):
-	if mode == "npc" and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
-		if Global.level_name == "Level0":
-			Global.next_tutorial("right-click")
-		
-		Global.emit(global_position, 2)
-		mode = "player"
-		Global.play_sound(Global.POSSES_SFX)
-		Global.GHOST.set_possesed(self)
-		get_tree().paused = true
+	if Global.level_name != "LevelIntro":
+		if mode == "npc" and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+			if Global.level_name == "Level0":
+				Global.next_tutorial("right-click")
+			
+			Global.emit(global_position, 2)
+			mode = "player"
+			Global.play_sound(Global.POSSES_SFX)
+			Global.GHOST.set_possesed(self)
+			get_tree().paused = true
