@@ -154,10 +154,12 @@ position = Vector2(593, 462)
 
 [node name="character" parent="." instance=ExtResource("9_yhnf8")]
 position = Vector2(222, 336)
+direction = "right"
 type = 5
 
 [node name="character2" parent="." instance=ExtResource("9_yhnf8")]
 position = Vector2(371, 336)
+direction = "right"
 type = 2
 
 [node name="switch" parent="." instance=ExtResource("10_jfm4o")]

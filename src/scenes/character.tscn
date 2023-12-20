@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://7r6dcibmyspx"]
+[gd_scene load_steps=47 format=3 uid="uid://7r6dcibmyspx"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
 [ext_resource type="Texture2D" uid="uid://d4lubcnokbtaf" path="res://sprites/jumpy_0.png" id="2_8vqtl"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://scenes/squish_area.gd" id="7_smm5e"]
 [ext_resource type="Texture2D" uid="uid://rolpe7usrfv3" path="res://sprites/grabyu_0.png" id="10_n2lg0"]
 [ext_resource type="Texture2D" uid="uid://cyah2t72k7suk" path="res://sprites/pushy_0.png" id="10_objm8"]
+[ext_resource type="Texture2D" uid="uid://dofug54lvj8dn" path="res://sprites/grabyG_0.png" id="10_odxwn"]
 [ext_resource type="Texture2D" uid="uid://b3kehj6s5a8py" path="res://sprites/grabyu_1.png" id="11_70qk0"]
 [ext_resource type="Texture2D" uid="uid://kpuxliphorex" path="res://sprites/pushy_1.png" id="11_bqxnt"]
 [ext_resource type="Texture2D" uid="uid://c6dnuyq4r3ywd" path="res://sprites/pushy_2.png" id="12_da4mg"]
@@ -35,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ktttmg4dy32" path="res://sprites/pushyp_1.png" id="23_atspn"]
 [ext_resource type="Texture2D" uid="uid://dbpj867wi6bb4" path="res://sprites/pushyp_2.png" id="24_5lhf7"]
 [ext_resource type="Texture2D" uid="uid://dduqnjsk5cbvj" path="res://sprites/pushyp_3.png" id="25_bxpaf"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="36_7tkjs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohtx4"]
 animations = [{
@@ -70,6 +72,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"graby",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_odxwn")
+}],
+"loop": true,
+"name": &"grabyG",
 "speed": 5.0
 }, {
 "frames": [{
@@ -232,13 +242,70 @@ size = Vector2(20, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvj60"]
 size = Vector2(28, 6)
 
+[sub_resource type="Animation" id="Animation_javn8"]
+resource_name = "new_animation"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("counter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 2.1, 2.2, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0), Vector2(0, -15), Vector2(0, 0), Vector2(0, -15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("counter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 2.1, 2.2, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("counter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 2.1, 2.2, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("counter/lbl_counter:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.1, 2.2, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1", "1"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sdes"]
+_data = {
+"new_animation": SubResource("Animation_javn8")
+}
+
 [node name="character" type="CharacterBody2D"]
 platform_on_leave = 2
 script = ExtResource("1_8fn81")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ohtx4")
-animation = &"flamy"
+animation = &"grabyG"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
@@ -277,6 +344,26 @@ script = ExtResource("7_smm5e")
 [node name="collider" type="CollisionShape2D" parent="squish_area"]
 position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_gvj60")
+
+[node name="counter" type="Node2D" parent="."]
+z_index = 600
+
+[node name="lbl_counter" type="Label" parent="counter"]
+offset_left = -4.0
+offset_top = -23.0
+offset_right = 4.0
+offset_bottom = -12.0
+theme_override_colors/font_color = Color(0.764706, 0, 0.941176, 1)
+theme_override_fonts/font = ExtResource("36_7tkjs")
+theme_override_font_sizes/font_size = 8
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CounterAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3sdes")
+}
 
 [connection signal="input_event" from="mouse_rec" to="." method="_on_mouse_rec_input_event"]
 [connection signal="body_entered" from="squish_area" to="squish_area" method="_on_body_entered"]

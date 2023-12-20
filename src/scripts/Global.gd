@@ -1,5 +1,5 @@
 extends Node
-enum npc_states {IDLE, ANGRY, INLOVE, INLOVE_CHASE}
+enum npc_states {IDLE, WORKING, COUNTING }
 enum npc_types {NONE, JUMPY, SLEEPY, WALKY, PUSHY, GRABY, FLAMY, FAKE}
 var GHOST = null
 var IN_OTHER = false

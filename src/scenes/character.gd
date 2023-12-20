@@ -7,13 +7,13 @@ var jump_speed = -300.0
 @export var direction = "right"
 var absorved_ttl = 0
 var is_absorved = false
-var first_time = true
 var push_force = 80.0
 var grabed_obj = null
 var total_friction = 0.3
 var friction = total_friction
 var emit_ttl = 0
-var action_total_ttl = 3
+var grab_ttl_total = 1
+var grab_ttl = grab_ttl_total
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -21,6 +21,7 @@ var idle_timer_total = 5
 var idle_timer = idle_timer_total
 
 func _ready():
+	$counter.visible = false
 	add_to_group("interactuable")
 	add_to_group("npc")
 	set_sprite()
@@ -49,6 +50,7 @@ func droped(speed, direction):
 
 func _physics_process(delta):
 	if grabbed:
+		$sprite.stop()
 		velocity.x = 0
 		velocity.y = 0
 		return 
@@ -65,6 +67,9 @@ func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y += gravity
 	else:
+		if state == Global.npc_states.WORKING and type == Global.npc_types.JUMPY:
+			state = Global.npc_states.IDLE
+		
 		if friction != total_friction:
 			friction = lerp(friction, total_friction, 0.01)
 		
@@ -102,39 +107,43 @@ func _physics_process(delta):
 			$sprite.animation = "pushy"
 	
 func change_mode(_mode):
-	first_time = true
+	$counter.visible = false
+	state = Global.npc_states.IDLE
 	mode = _mode
 	if mode == "player":
 		emit_ttl = 0.2
 
 func process_npc(delta):
-	if type == Global.npc_types.WALKY or type == Global.npc_types.PUSHY: 
-		idle_timer = 0
-	
-	if first_time and type == Global.npc_types.SLEEPY:
-		first_time = false
-		idle_timer = 0.1
-	
-	if action_total_ttl > 0:
-		action_total_ttl -= 1 * delta
-	
-	if state == Global.npc_states.IDLE and action_total_ttl <= 0:
-		idle_timer -= 1 * delta
-		if idle_timer <= 0:
-			idle_timer = idle_timer_total
-			if type != Global.npc_types.FAKE:
+	if type != Global.npc_types.FAKE:
+		if state == Global.npc_states.IDLE:
+			if !$CounterAnimation.is_playing():
+				state = Global.npc_states.COUNTING
+				$counter.visible = true	
+				$CounterAnimation.play("new_animation")
+				
+		if state == Global.npc_states.COUNTING:
+			if !$CounterAnimation.is_playing():
+				if type == Global.npc_types.GRABY:
+					grab_ttl = grab_ttl_total
 				do_action(delta)
-		
-	if state == Global.npc_states.INLOVE:
-		pass
-	if state == Global.npc_states.INLOVE_CHASE:
-		pass
-	if state == Global.npc_states.ANGRY:
-		pass
-	
+				
+	if grab_ttl > 0 and state == Global.npc_states.WORKING and type == Global.npc_types.GRABY:
+		do_action(delta)
+		grab_ttl -= 1 * delta
+		if grab_ttl <= 0:
+			$sprite.animation = "graby"
+			state = Global.npc_states.IDLE
+			
 func process_player(delta):
 	if !Global.WIN:
 		var moving = false
+		if grab_ttl > 0 and state == Global.npc_states.WORKING and type == Global.npc_types.GRABY:
+			grab_ttl -= 1 * delta
+			do_action(delta)
+			if grab_ttl <= 0:
+				$sprite.animation = "graby"
+				state = Global.npc_states.IDLE
+		
 		if Input.is_action_just_pressed("jump"):
 			if type != Global.npc_types.WALKY and type != Global.npc_types.PUSHY:
 				do_action(delta)
@@ -157,6 +166,10 @@ func process_player(delta):
 			un_sleep()
 			
 		if moving:
+			if type == Global.npc_types.GRABY:
+				if $sprite.animation == "grabyG":
+					$sprite.animation = "graby"
+			
 			$sprite.play()
 		else:
 			$sprite.stop()
@@ -196,6 +209,7 @@ func do_action(delta):
 
 func jump(delta):
 	if is_on_floor() and !grabbed:
+		state = Global.npc_states.WORKING
 		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed
@@ -211,11 +225,13 @@ func little_jump():
 		velocity.y = jump_speed / 2
 	
 func sleep(delta):
+	state == Global.npc_states.WORKING
 	$sprite.stop()
 	$Sleep.visible = true
 	$SleepAnimation.play("new_animation")
 	
 func un_sleep():
+	state == Global.npc_states.IDLE
 	$Sleep.visible = false
 	$SleepAnimation.stop(false)
 	
@@ -236,6 +252,7 @@ func swap_direction():
 		return "left"
 	
 func walk(delta):
+	state == Global.npc_states.WORKING
 	var moving = false
 	if type == Global.npc_types.WALKY:
 		if is_on_wall():
@@ -264,9 +281,12 @@ func walk(delta):
 	
 func grab():
 	if grabed_obj == null:
+		state = Global.npc_states.WORKING
 		var areas = $grab_area.get_overlapping_bodies()
+		$sprite.animation = "grabyG"
 		for area in areas:
 			if area.is_in_group("interactuable"):
+				state = Global.npc_states.IDLE
 				grabed_obj = area
 				area.grabbed = true
 				get_parent().remove_child(area)
@@ -274,7 +294,9 @@ func grab():
 				$sprite.animation = "grabyu"
 				area.position.x = 0
 				area.position.y = -35
+				
 	else:
+		state = Global.npc_states.IDLE
 		grabed_obj.grabbed = false
 		$sprite.animation = "graby"
 		remove_child(grabed_obj)

@@ -236,6 +236,7 @@ environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_d8f4e")]
 position = Vector2(116, 465)
+direction = "right"
 type = 7
 
 [node name="UnPosses" type="Area2D" parent="."]

@@ -159,7 +159,12 @@ position = Vector2(311, 449)
 type = 5
 
 [node name="character3" parent="." instance=ExtResource("8_05x4b")]
-position = Vector2(428, 440)
-type = 2
+position = Vector2(501, 452)
+direction = "left"
+type = 4
+
+[node name="character4" parent="." instance=ExtResource("8_05x4b")]
+position = Vector2(279, 234)
+type = 1
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
