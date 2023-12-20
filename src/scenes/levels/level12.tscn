@@ -156,7 +156,7 @@ position = Vector2(687, 336)
 position = Vector2(-0.999939, -51)
 
 [node name="character" parent="." instance=ExtResource("9_1dj30")]
-position = Vector2(441, 336)
+position = Vector2(401, 336)
 type = 4
 
 [node name="character2" parent="." instance=ExtResource("9_1dj30")]

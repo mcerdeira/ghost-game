@@ -1,23 +1,25 @@
-[gd_scene load_steps=19 format=3 uid="uid://csapxdj6ih6tv"]
+[gd_scene load_steps=21 format=3 uid="uid://cuutnp1r6y55"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_uwusa"]
-[ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="2_3lhew"]
-[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="3_tja7f"]
-[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="4_bhagr"]
-[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="5_0jodj"]
-[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="6_0pcvc"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_lbo7v"]
-[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="8_05x4b"]
-[ext_resource type="PackedScene" uid="uid://81xnnqebi3mp" path="res://scenes/box.tscn" id="9_4b5wc"]
-[ext_resource type="PackedScene" uid="uid://b4lwufhu6l7tk" path="res://scenes/fire_emiter.tscn" id="10_604e0"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_pws1b"]
+[ext_resource type="Shader" path="res://scenes/levels/FX.gdshader" id="2_b5tmp"]
+[ext_resource type="Texture2D" uid="uid://d5i6ynkpik48" path="res://sprites/back.png" id="3_vj2bu"]
+[ext_resource type="Texture2D" uid="uid://ok6dt5grhdl8" path="res://sprites/floor_spr_2.png" id="4_edpr6"]
+[ext_resource type="Texture2D" uid="uid://ch8hlxkcfkr3v" path="res://sprites/floor_spr_1.png" id="5_nyop4"]
+[ext_resource type="PackedScene" uid="uid://vr4xev738l5k" path="res://scenes/ghost.tscn" id="6_f55n4"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_csdih"]
+[ext_resource type="PackedScene" uid="uid://d0dkx8ufq5anc" path="res://scenes/fruit.tscn" id="8_yoxqh"]
+[ext_resource type="PackedScene" uid="uid://7r6dcibmyspx" path="res://scenes/character.tscn" id="9_yhnf8"]
+[ext_resource type="PackedScene" uid="uid://ddoknhxuljvej" path="res://scenes/switch.tscn" id="10_jfm4o"]
+[ext_resource type="PackedScene" uid="uid://dfpt5ssvu2gky" path="res://scenes/floor.tscn" id="11_et5fa"]
+[ext_resource type="PackedScene" uid="uid://brgkl6voaoltp" path="res://scenes/portal.tscn" id="12_kkjb6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0eiud"]
-shader = ExtResource("2_3lhew")
+shader = ExtResource("2_b5tmp")
 shader_parameter/apply = true
 shader_parameter/amount = 0.1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7atg"]
-texture = ExtResource("4_bhagr")
+texture = ExtResource("4_edpr6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -25,7 +27,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rudm8"]
-texture = ExtResource("5_0jodj")
+texture = ExtResource("5_nyop4")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -71,8 +73,8 @@ _data = {
 "new_animation": SubResource("Animation_ybq0l")
 }
 
-[node name="Level11" type="Node2D"]
-script = ExtResource("1_uwusa")
+[node name="Level17" type="Node2D"]
+script = ExtResource("1_pws1b")
 
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
@@ -100,17 +102,17 @@ color = Color(0, 0, 0, 0.811765)
 modulate = Color(0.9, 0.61, 0.23, 0.2)
 position = Vector2(553.5, 295)
 scale = Vector2(0.700781, 0.685)
-texture = ExtResource("3_tja7f")
+texture = ExtResource("3_vj2bu")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_it710")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 720912, 0, 0, 720911, 0, 0, 720910, 0, 0, 851975, 0, 0, 917511, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 917522, 0, 0)
+layer_0/tile_data = PackedInt32Array(720900, 5, 0, 720901, 5, 0, 720902, 5, 0, 720903, 5, 0, 983048, 5, 0, 983049, 5, 0, 983050, 5, 0, 983051, 5, 0, 983052, 5, 0, 983053, 5, 0, 983054, 5, 0, 983055, 5, 0, 983056, 5, 0, 983057, 5, 0, 983058, 5, 0, 983059, 5, 0, 983060, 5, 0, 983061, 5, 0, 720904, 5, 0, 720905, 5, 0, 720906, 5, 0, 720907, 5, 0, 720908, 5, 0, 720909, 5, 0, 655373, 5, 0, 983062, 5, 0, 983063, 5, 0, 983064, 5, 0, 983065, 5, 0, 983047, 5, 0, 720899, 5, 0, 720898, 5, 0, 655362, 5, 0, 589826, 5, 0, 524290, 5, 0, 458754, 5, 0)
 metadata/_edit_lock_ = true
 
-[node name="ghost" parent="." instance=ExtResource("6_0pcvc")]
+[node name="ghost" parent="." instance=ExtResource("6_f55n4")]
 process_mode = 3
 z_index = 10
 position = Vector2(307, 164)
@@ -129,7 +131,7 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 1151.0
 offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("7_lbo7v")
+theme_override_fonts/font = ExtResource("7_csdih")
 theme_override_font_sizes/font_size = 24
 text = "FRUITS: 0"
 horizontal_alignment = 1
@@ -144,22 +146,27 @@ libraries = {
 "": SubResource("AnimationLibrary_wclnq")
 }
 
-[node name="character" parent="." instance=ExtResource("8_05x4b")]
-position = Vector2(459, 230)
-type = 4
+[node name="fruit" parent="." instance=ExtResource("8_yoxqh")]
+position = Vector2(497, 462)
 
-[node name="box" parent="." instance=ExtResource("9_4b5wc")]
-position = Vector2(526, 233)
+[node name="fruit2" parent="." instance=ExtResource("8_yoxqh")]
+position = Vector2(593, 462)
 
-[node name="fire_emiter" parent="." instance=ExtResource("10_604e0")]
-position = Vector2(559, 317)
-
-[node name="character2" parent="." instance=ExtResource("8_05x4b")]
-position = Vector2(311, 449)
+[node name="character" parent="." instance=ExtResource("9_yhnf8")]
+position = Vector2(222, 336)
 type = 5
 
-[node name="character3" parent="." instance=ExtResource("8_05x4b")]
-position = Vector2(428, 440)
+[node name="character2" parent="." instance=ExtResource("9_yhnf8")]
+position = Vector2(371, 336)
 type = 2
+
+[node name="switch" parent="." instance=ExtResource("10_jfm4o")]
+position = Vector2(543, 464)
+
+[node name="floor" parent="." instance=ExtResource("11_et5fa")]
+position = Vector2(157, 336)
+
+[node name="portal" parent="." instance=ExtResource("12_kkjb6")]
+position = Vector2(118, 331)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

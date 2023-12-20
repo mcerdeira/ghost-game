@@ -1,4 +1,5 @@
 extends CharacterBody2D
+var grabbed = false
 var mode = "npc"
 var gravity = 10.0
 var speed = 75.0
@@ -12,6 +13,7 @@ var grabed_obj = null
 var total_friction = 0.3
 var friction = total_friction
 var emit_ttl = 0
+var action_total_ttl = 3
 
 @export var type = Global.npc_types.NONE
 var state = Global.npc_states.IDLE
@@ -38,8 +40,19 @@ func pushed(force, _direction):
 		force = -force
 		
 	velocity.x = force
+	
+func droped(speed, direction):
+	grabbed = false
+	velocity.y = jump_speed
+	friction = 0.02
+	pushed(speed * 2, direction)
 
 func _physics_process(delta):
+	if grabbed:
+		velocity.x = 0
+		velocity.y = 0
+		return 
+			
 	if Global.WIN:
 		if is_absorved:
 			if absorved_ttl > 0:
@@ -51,6 +64,9 @@ func _physics_process(delta):
 	
 	if !is_on_floor():
 		velocity.y += gravity
+	else:
+		if friction != total_friction:
+			friction = lerp(friction, total_friction, 0.01)
 		
 	velocity.x = lerp(velocity.x, 0.0, friction)
 	
@@ -71,12 +87,19 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if type == Global.npc_types.PUSHY:
-		for i in get_slide_collision_count():
+		var slide_col = get_slide_collision_count()
+		var push_something = false
+		for i in slide_col:
 			var c = get_slide_collision(i)
 			var col = c.get_collider() 
 			var normal = c.get_normal()
 			if col.is_in_group("interactuable") and normal.y == 0:
+				push_something = true
 				col.pushed(speed, direction)
+		if push_something:
+			$sprite.animation = "pushyp"
+		else:
+			$sprite.animation = "pushy"
 	
 func change_mode(_mode):
 	first_time = true
@@ -92,7 +115,10 @@ func process_npc(delta):
 		first_time = false
 		idle_timer = 0.1
 	
-	if state == Global.npc_states.IDLE:
+	if action_total_ttl > 0:
+		action_total_ttl -= 1 * delta
+	
+	if state == Global.npc_states.IDLE and action_total_ttl <= 0:
 		idle_timer -= 1 * delta
 		if idle_timer <= 0:
 			idle_timer = idle_timer_total
@@ -169,18 +195,20 @@ func do_action(delta):
 			walk(delta)
 
 func jump(delta):
-	if is_on_floor():
+	if is_on_floor() and !grabbed:
 		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed
 	
 func mega_jump():
-	Global.play_sound(Global.SPRING_SFX)
-	velocity.y = jump_speed * 2
+	if !grabbed:
+		Global.play_sound(Global.SPRING_SFX)
+		velocity.y = jump_speed * 2
 	
 func little_jump():
-	Global.play_sound(Global.JUMP_SFX)
-	velocity.y = jump_speed / 2
+	if !grabbed:
+		Global.play_sound(Global.JUMP_SFX)
+		velocity.y = jump_speed / 2
 	
 func sleep(delta):
 	$sprite.stop()
@@ -191,7 +219,6 @@ func un_sleep():
 	$Sleep.visible = false
 	$SleepAnimation.stop(false)
 	
-
 func set_collider():
 	if type == Global.npc_types.GRABY:
 		if direction == "left":
@@ -244,10 +271,12 @@ func grab():
 				area.grabbed = true
 				get_parent().remove_child(area)
 				add_child(area)
+				$sprite.animation = "grabyu"
 				area.position.x = 0
 				area.position.y = -35
 	else:
 		grabed_obj.grabbed = false
+		$sprite.animation = "graby"
 		remove_child(grabed_obj)
 		get_parent().add_child(grabed_obj)
 		grabed_obj.global_position.x = global_position.x

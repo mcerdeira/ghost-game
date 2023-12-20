@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://7r6dcibmyspx"]
+[gd_scene load_steps=43 format=3 uid="uid://7r6dcibmyspx"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_8fn81"]
 [ext_resource type="Texture2D" uid="uid://d4lubcnokbtaf" path="res://sprites/jumpy_0.png" id="2_8vqtl"]
@@ -19,14 +19,22 @@
 [ext_resource type="Texture2D" uid="uid://dlcc3qm1pronh" path="res://sprites/jumpy_3.png" id="5_rahwa"]
 [ext_resource type="Texture2D" uid="uid://bvwah4xbherm6" path="res://sprites/sleep.png" id="6_nb65x"]
 [ext_resource type="Script" path="res://scenes/squish_area.gd" id="7_smm5e"]
+[ext_resource type="Texture2D" uid="uid://rolpe7usrfv3" path="res://sprites/grabyu_0.png" id="10_n2lg0"]
 [ext_resource type="Texture2D" uid="uid://cyah2t72k7suk" path="res://sprites/pushy_0.png" id="10_objm8"]
+[ext_resource type="Texture2D" uid="uid://b3kehj6s5a8py" path="res://sprites/grabyu_1.png" id="11_70qk0"]
 [ext_resource type="Texture2D" uid="uid://kpuxliphorex" path="res://sprites/pushy_1.png" id="11_bqxnt"]
 [ext_resource type="Texture2D" uid="uid://c6dnuyq4r3ywd" path="res://sprites/pushy_2.png" id="12_da4mg"]
+[ext_resource type="Texture2D" uid="uid://b1n373dqidvx3" path="res://sprites/grabyu_2.png" id="12_nx44a"]
+[ext_resource type="Texture2D" uid="uid://bwb16d7okfg64" path="res://sprites/grabyu_3.png" id="13_836yi"]
 [ext_resource type="Texture2D" uid="uid://dma3d7sj8wbha" path="res://sprites/pushy_3.png" id="13_tlps4"]
 [ext_resource type="Texture2D" uid="uid://dulf7o4bne1g" path="res://sprites/walky_0.png" id="14_ydohl"]
 [ext_resource type="Texture2D" uid="uid://d4dlhich3jnrv" path="res://sprites/walky_1.png" id="15_sx7xw"]
 [ext_resource type="Texture2D" uid="uid://t8nkdrk2c8ia" path="res://sprites/walky_2.png" id="16_tr3rd"]
 [ext_resource type="Texture2D" uid="uid://dd0gr8r2ekxj" path="res://sprites/walky_3.png" id="17_gnfnl"]
+[ext_resource type="Texture2D" uid="uid://cl363yco8cap0" path="res://sprites/pushyp_0.png" id="22_pb3bh"]
+[ext_resource type="Texture2D" uid="uid://b7ktttmg4dy32" path="res://sprites/pushyp_1.png" id="23_atspn"]
+[ext_resource type="Texture2D" uid="uid://dbpj867wi6bb4" path="res://sprites/pushyp_2.png" id="24_5lhf7"]
+[ext_resource type="Texture2D" uid="uid://dduqnjsk5cbvj" path="res://sprites/pushyp_3.png" id="25_bxpaf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohtx4"]
 animations = [{
@@ -66,6 +74,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_n2lg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_70qk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nx44a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_836yi")
+}],
+"loop": true,
+"name": &"grabyu",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_8vqtl")
 }, {
 "duration": 1.0,
@@ -96,6 +121,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"pushy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_pb3bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_atspn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_5lhf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_bxpaf")
+}],
+"loop": true,
+"name": &"pushyp",
 "speed": 5.0
 }, {
 "frames": [{

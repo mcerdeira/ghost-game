@@ -10,10 +10,14 @@ func _on_body_entered(body):
 		if Global.IN_OTHER:
 			body_loco = body
 			$AnimationPlayer.play("new_animation")
+			
+func play_SPRING_SFX():
+	Global.play_sound(Global.SPRING_SFX)
 
 func _on_animation_player_animation_finished(anim_name):
 	forward = !forward
 	if forward:
+		Music.stop()
 		body_loco.visible = false
 		Global.shaker_obj.shake(50, 2.1)
 		Global.play_sound(Global.POSSES_SFX)
@@ -35,3 +39,4 @@ func _on_animation_player_animation_finished(anim_name):
 		$AnimationPlayer.play("new_animation_2")
 	else:
 		Global.shaker_obj.shake(20, 2.1)
+		Global.play_sound(Global.BOBM_SFX)

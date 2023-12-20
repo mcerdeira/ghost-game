@@ -14,6 +14,8 @@ func _ready():
 		if !Global.PLAY_INTRO:
 			get_tree().change_scene_to_file("res://scenes/levels/Title.tscn")
 		else:
+			Music.play(Global.introTheme)
+			
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 	if Global.level_name != "LevelIntro":

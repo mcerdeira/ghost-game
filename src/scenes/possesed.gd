@@ -14,7 +14,10 @@ func play_portal_sfx():
 	Global.play_sound(Global.PORTAL_SFX)
 
 func _ready():
-	await get_tree().create_timer(5).timeout 
+	await get_tree().create_timer(2).timeout
+	Global.play_sound(Global.LAUGH_SFX)
+	await get_tree().create_timer(3).timeout
+	Music.play(Global.intro_PanicTheme)
 	Global.DIALOG_OBJ.show_balloon("possessed1", "HA HA HA!!!")
 	await get_tree().create_timer(5).timeout 
 	Global.DIALOG_OBJ.show_balloon("possessed1", "After so many years...")
@@ -40,6 +43,7 @@ func _ready():
 	Global.shaker_obj.shake(20, 2.1)
 	await get_tree().create_timer(7).timeout 
 	$AnimationPlayer.play("new_animation")
+	Global.play_sound(Global.LAUGH_SFX)
 	await get_tree().create_timer(5).timeout 
 	Global.DIALOG_OBJ.show_balloon("ghost_scared", "Oh no!! I'm trapped here FOREVER???")
 	await get_tree().create_timer(9).timeout 

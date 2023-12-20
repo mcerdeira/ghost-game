@@ -152,6 +152,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1631, 864), Vector2(1631, 360)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_SPRING_SFX"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u7oeg"]
 _data = {
@@ -221,7 +235,7 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_d8f4e")]
-position = Vector2(396, 465)
+position = Vector2(116, 465)
 type = 7
 
 [node name="UnPosses" type="Area2D" parent="."]

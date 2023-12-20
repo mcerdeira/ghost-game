@@ -22,6 +22,7 @@ var SPRING_SFX = null
 var POSSES_SFX = null
 var BITE_SFX = null
 var BOBM_SFX = null
+var LAUGH_SFX = null
 var PORTAL_SFX = null
 var particle = preload("res://scenes/particle2.tscn")
 var SAVED_GAME = false
@@ -32,6 +33,9 @@ var DIALOG_OBJ = null
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
+
+var introTheme = "res://music/Insistent.ogg"
+var intro_PanicTheme = "res://music/panic_3.mp3"
 var TUTORIALS = [
 	"[CLICK TO MOVE THE GHOST AROUND]",
 	"[RIGHT CLICK ON OTHERS TO POSSES]",
@@ -89,6 +93,7 @@ var LEVELS = [
 	"res://scenes/levels/level14.tscn",
 	"res://scenes/levels/level15.tscn",
 	"res://scenes/levels/level16.tscn",
+	"res://scenes/levels/level17.tscn"
 ]
 
 func save_game():
@@ -132,6 +137,7 @@ func load_sfx():
 	LASER_SFX = preload("res://sfx/saw.wav")
 	TELEPORT_SFX = preload("res://sfx/teleportation sound effect.mp3")
 	BOBM_SFX = preload("res://sfx/BombExplosionSfx.wav")
+	LAUGH_SFX = preload("res://sfx/Kefka Laugh Sound Effect.mp3")
 	
 func emit(_global_position, count):
 	for i in range(count):
