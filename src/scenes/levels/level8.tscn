@@ -151,7 +151,7 @@ direction = "left"
 type = 4
 
 [node name="fruit" parent="." instance=ExtResource("9_vxdun")]
-position = Vector2(711, 368)
+position = Vector2(720, 368)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
@@ -160,7 +160,7 @@ libraries = {
 }
 
 [node name="box" parent="." instance=ExtResource("10_tvne5")]
-position = Vector2(472, 217)
+position = Vector2(496, 369)
 
 [node name="switch" parent="." instance=ExtResource("11_i0s1g")]
 position = Vector2(401, 368)

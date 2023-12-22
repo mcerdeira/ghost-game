@@ -187,9 +187,9 @@ position = Vector2(656, 464)
 type = "fire_door"
 
 [node name="fruit" parent="." instance=ExtResource("16_jocrk")]
-position = Vector2(911, 461)
+position = Vector2(912, 464)
 
 [node name="fruit2" parent="." instance=ExtResource("16_jocrk")]
-position = Vector2(868, 461)
+position = Vector2(880, 464)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

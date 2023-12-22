@@ -186,13 +186,13 @@ position = Vector2(304, 304)
 type = 2
 
 [node name="fruit" parent="." instance=ExtResource("16_5f0xg")]
-position = Vector2(836, 202)
+position = Vector2(832, 208)
 
 [node name="fruit2" parent="." instance=ExtResource("16_5f0xg")]
-position = Vector2(318, 109)
+position = Vector2(304, 112)
 
 [node name="fruit3" parent="." instance=ExtResource("16_5f0xg")]
-position = Vector2(433, 190)
+position = Vector2(432, 176)
 
 [node name="floor2" parent="." instance=ExtResource("15_ma18s")]
 position = Vector2(720, 240)

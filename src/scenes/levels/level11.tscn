@@ -152,7 +152,7 @@ position = Vector2(543, 240)
 type = 4
 
 [node name="fruit" parent="." instance=ExtResource("9_dj3d3")]
-position = Vector2(143, 398)
+position = Vector2(144, 400)
 
 [node name="character2" parent="." instance=ExtResource("8_oh217")]
 position = Vector2(368, 240)
@@ -175,6 +175,6 @@ position = Vector2(816, 425)
 position = Vector2(368, 432)
 
 [node name="fruit2" parent="." instance=ExtResource("9_dj3d3")]
-position = Vector2(208, 206)
+position = Vector2(208, 208)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

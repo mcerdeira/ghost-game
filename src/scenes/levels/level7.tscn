@@ -146,7 +146,7 @@ position = Vector2(366, 318)
 environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_xub30")]
-position = Vector2(370, 329)
+position = Vector2(368, 336)
 type = 2
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
@@ -168,6 +168,6 @@ scale = Vector2(-1, 1)
 _teleporter = NodePath("../teleporter")
 
 [node name="fruit" parent="." instance=ExtResource("9_tvuf4")]
-position = Vector2(867, 141)
+position = Vector2(848, 144)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -138,7 +138,7 @@ vertical_alignment = 1
 
 [node name="portal" parent="." instance=ExtResource("7_g3yr2")]
 z_index = -1
-position = Vector2(366, 333)
+position = Vector2(592, 561)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaqbm")
@@ -148,7 +148,7 @@ position = Vector2(367, 336)
 type = 2
 
 [node name="fruit" parent="." instance=ExtResource("9_phoob")]
-position = Vector2(816, 326)
+position = Vector2(816, 336)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
@@ -159,5 +159,8 @@ libraries = {
 [node name="moving_plat" parent="." instance=ExtResource("10_jhd6r")]
 position = Vector2(432, 368)
 start_on = false
+
+[node name="fruit2" parent="." instance=ExtResource("9_phoob")]
+position = Vector2(592, 432)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -144,11 +144,11 @@ position = Vector2(366, 318)
 environment = SubResource("Environment_oaqbm")
 
 [node name="character" parent="." instance=ExtResource("8_46xac")]
-position = Vector2(370, 329)
+position = Vector2(369, 336)
 type = 1
 
 [node name="fruit" parent="." instance=ExtResource("9_xxvae")]
-position = Vector2(816, 326)
+position = Vector2(816, 336)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
@@ -160,9 +160,9 @@ libraries = {
 position = Vector2(432, 368)
 
 [node name="fruit2" parent="." instance=ExtResource("9_xxvae")]
-position = Vector2(579, 271)
+position = Vector2(592, 272)
 
 [node name="fruit3" parent="." instance=ExtResource("9_xxvae")]
-position = Vector2(640, 271)
+position = Vector2(624, 272)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

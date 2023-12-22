@@ -154,7 +154,7 @@ direction = "left"
 type = 4
 
 [node name="fruit" parent="." instance=ExtResource("9_1j0ok")]
-position = Vector2(675, 368)
+position = Vector2(687, 368)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1
@@ -163,10 +163,10 @@ libraries = {
 }
 
 [node name="box" parent="." instance=ExtResource("10_raysh")]
-position = Vector2(489, 216)
+position = Vector2(489, 368)
 
 [node name="floor_spring" parent="." instance=ExtResource("11_c3xj5")]
-position = Vector2(400, 368)
+position = Vector2(400, 400)
 
 [node name="floor" parent="." instance=ExtResource("12_jkorg")]
 position = Vector2(639, 368)

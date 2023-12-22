@@ -152,7 +152,7 @@ direction = "left"
 type = 4
 
 [node name="fruit" parent="." instance=ExtResource("9_37kx8")]
-position = Vector2(996, 366)
+position = Vector2(976, 368)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1

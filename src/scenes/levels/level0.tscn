@@ -157,7 +157,7 @@ position = Vector2(546, 368)
 type = 2
 
 [node name="fruit" parent="." instance=ExtResource("9_urn4o")]
-position = Vector2(711, 368)
+position = Vector2(720, 368)
 
 [node name="background_animation" type="AnimationPlayer" parent="."]
 speed_scale = 0.1

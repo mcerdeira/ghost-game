@@ -163,7 +163,7 @@ position = Vector2(496, 304)
 position = Vector2(221, 304)
 
 [node name="fruit" parent="." instance=ExtResource("10_smfgc")]
-position = Vector2(655, 252)
+position = Vector2(656, 240)
 
 [node name="moving_plat" parent="." instance=ExtResource("11_p6jog")]
 position = Vector2(387, 227)
@@ -181,6 +181,6 @@ position = Vector2(846, 275)
 _teleporter = NodePath("../teleporter")
 
 [node name="fruit2" parent="." instance=ExtResource("10_smfgc")]
-position = Vector2(388, 189)
+position = Vector2(388, 195)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -141,13 +141,13 @@ position = Vector2(310, 433)
 position = Vector2(368, 241)
 
 [node name="fruit" parent="." instance=ExtResource("9_kra8n")]
-position = Vector2(590, 241)
+position = Vector2(591, 240)
 
 [node name="fruit2" parent="." instance=ExtResource("9_kra8n")]
 position = Vector2(431, 463)
 
 [node name="fruit3" parent="." instance=ExtResource("9_kra8n")]
-position = Vector2(590, 431)
+position = Vector2(591, 432)
 
 [node name="lbl_fruits" type="Label" parent="."]
 offset_left = 6.0

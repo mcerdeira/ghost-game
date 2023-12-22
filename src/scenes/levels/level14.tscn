@@ -180,7 +180,7 @@ position = Vector2(463, 496)
 type = 2
 
 [node name="fruit2" parent="." instance=ExtResource("13_p5qhk")]
-position = Vector2(604, 495)
+position = Vector2(591, 496)
 
 [node name="floor3" parent="." instance=ExtResource("10_hlp1t")]
 position = Vector2(463, 496)

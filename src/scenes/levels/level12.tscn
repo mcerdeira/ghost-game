@@ -175,7 +175,7 @@ type = "fire_door"
 position = Vector2(295, 332)
 
 [node name="fruit" parent="." instance=ExtResource("13_pr473")]
-position = Vector2(553, 338)
+position = Vector2(560, 336)
 
 [node name="switch" parent="." instance=ExtResource("15_8d7xm")]
 position = Vector2(687, 336)
