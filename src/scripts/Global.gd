@@ -20,6 +20,7 @@ var LASER_SFX = null
 var SWITCH_SFX = null
 var SPRING_SFX = null
 var POSSES_SFX = null
+var BOOT_SFX = null
 var BITE_SFX = null
 var BOBM_SFX = null
 var LAUGH_SFX = null
@@ -138,6 +139,7 @@ func load_sfx():
 	TELEPORT_SFX = preload("res://sfx/teleportation sound effect.mp3")
 	BOBM_SFX = preload("res://sfx/BombExplosionSfx.wav")
 	LAUGH_SFX = preload("res://sfx/Kefka Laugh Sound Effect.mp3")
+	BOOT_SFX = preload("res://sfx/boot.mp3")
 	
 func emit(_global_position, count):
 	for i in range(count):

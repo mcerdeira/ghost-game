@@ -58,6 +58,7 @@ func _physics_process(delta):
 		$lbl_fruits.text = "FRUITS: " + str(Global.FRUITS) + " / " + str(Global.TOTAL_FRUITS)
 	if Global.level_name != "LevelIntro":
 		$background.rotation_degrees += (speed * -1) * delta
+		
 	
 	if Global.WIN:
 		if Global.level_name == "Title" or Global.level_name == "LevelIntro":
@@ -73,18 +74,23 @@ func _physics_process(delta):
 		win_ttl -= 1 * delta
 		if win_ttl <= 0:
 			if Global.level_name == "LevelIntro":
-				get_tree().change_scene_to_file("res://scenes/levels/Title.tscn")
+				if !$AnimationPlayer.is_playing():
+					$AnimationPlayer.play("new_animation")
 			elif Global.level_name == "Title":
 				if !Global.SAVED_GAME:
 					Global.LEVEL = 1
 			else:
 				Global.LEVEL += 1
 				Global.save_game()
-				
-			var next_level = Global.LEVELS[Global.LEVEL]
-			Global.init()
-			Global.kill_particles()
-			get_tree().change_scene_to_file(next_level)
+			
+			if Global.level_name != "LevelIntro":
+				var next_level = Global.LEVELS[Global.LEVEL]
+				Global.init()
+				Global.kill_particles()
+				get_tree().change_scene_to_file(next_level)
+			
+func goto_presents():
+	get_tree().change_scene_to_file("res://scenes/levels/Presents.tscn")
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.double_click:
